@@ -7,17 +7,10 @@ tokens = [
     'PLUS', 'MINUS', 'TIMES', 'DIVIDE', 'ARROW',
     'NUMBER', 'IDENTIFIER',
     'IF', 'ELSE', 'WHILE', 'FOR',
+    'AND', 'OR', 'NOT',
     'LPAREN', 'RPAREN', 'LBRACE', 'RBRACE',
     'SEMICOLON', 'COMMENT'
 ]
-
-# Token para comentários
-def t_COMMENT(t):
-    r'//.*'
-    return t
-
-# Token ARROW
-t_ARROW = r'->'
 
 # Palavras reservadas
 reserved = {
@@ -31,8 +24,25 @@ reserved = {
     'if': 'IF',
     'else': 'ELSE',
     'while': 'WHILE',
-    'for': 'FOR'
+    'for': 'FOR',
+    'hero': 'IDENTIFIER',
+    'enemy': 'IDENTIFIER',
+    'treasure': 'IDENTIFIER',
+    'trap': 'IDENTIFIER'
 }
+
+# Token para comentários
+def t_COMMENT(t):
+    r'//.*'
+    pass  # Ignorar comentários
+
+# Token ARROW
+t_ARROW = r'->'
+
+# Operadores lógicos
+t_AND = r'&&'
+t_OR = r'\|\|'
+t_NOT = r'!'
 
 # Definir identificadores
 def t_IDENTIFIER(t):
@@ -41,7 +51,10 @@ def t_IDENTIFIER(t):
     return t
 
 # Definir números
-t_NUMBER = r'\d+'
+def t_NUMBER(t):
+    r'\d+'
+    t.value = int(t.value)
+    return t
 
 # Outros tokens
 t_PLUS = r'\+'

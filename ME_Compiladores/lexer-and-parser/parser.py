@@ -15,8 +15,6 @@ def p_S(p):
          | for_stmt S
          | expr
          | expr S
-         | COMMENT
-         | COMMENT S
          | empty
          '''
     pass
@@ -62,7 +60,10 @@ def p_expr(p):
             | expr MINUS expr
             | expr TIMES expr
             | expr DIVIDE expr
-            | expr ARROW expr'''
+            | expr ARROW expr
+            | expr AND expr
+            | expr OR expr
+            | NOT expr'''
     pass
 
 # Tratamento de erros sintáticos

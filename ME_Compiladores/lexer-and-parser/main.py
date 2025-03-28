@@ -2,6 +2,7 @@ from lexer import lexer  # Importa o lexer do arquivo lexer.py
 from parser import parser  # Importa o parser do arquivo parser.py
 
 def main():
+    # Código de exemplo para teste
     code = """
     // Este é um comentário
     move_up
@@ -17,7 +18,7 @@ def main():
         tok = lexer.token()
         if not tok:
             break
-        print(tok)
+        print(f"Token: {tok.type}, Valor: {tok.value}, Linha: {tok.lineno}, Posição: {tok.lexpos}")
     print("=== Fim do Analisador Léxico ===\n")
 
     print("=== Início do Analisador Sintático ===")
