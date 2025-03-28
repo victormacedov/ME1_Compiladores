@@ -3,20 +3,24 @@ import ply.yacc as yacc
 # Importar tokens do lexer
 from lexer import tokens
 
+# Definição da precedência dos operadores
+precedence = (
+    ('left', 'OR'),
+    ('left', 'AND'),
+    ('right', 'NOT'),
+    ('left', 'PLUS', 'MINUS'),
+    ('left', 'TIMES', 'DIVIDE'),
+    ('left', 'ARROW'),
+)
+
 # Regras de gramática
 def p_S(p):
-    '''S : cmd
-         | cmd S
-         | if_stmt
+    '''S : cmd S
          | if_stmt S
-         | while_stmt
          | while_stmt S
-         | for_stmt
          | for_stmt S
-         | expr
          | expr S
-         | empty
-         '''
+         | empty'''
     pass
 
 def p_empty(p):
@@ -42,7 +46,8 @@ def p_action_cmd(p):
     pass
 
 def p_if_stmt(p):
-    '''if_stmt : IF LPAREN expr RPAREN LBRACE S RBRACE ELSE LBRACE S RBRACE'''
+    '''if_stmt : IF LPAREN expr RPAREN LBRACE S RBRACE
+               | IF LPAREN expr RPAREN LBRACE S RBRACE ELSE LBRACE S RBRACE'''
     pass
 
 def p_while_stmt(p):
@@ -69,7 +74,7 @@ def p_expr(p):
 # Tratamento de erros sintáticos
 def p_error(p):
     if p:
-        print(f"Erro de sintaxe! Token inesperado: {p.type} ('{p.value}') na linha {getattr(p, 'lineno', 'desconhecida')}")
+        print(f"Erro de sintaxe! Token inesperado: {p.type} ('{p.value}') na linha {getattr(p, 'lineno', 'desconhecida')} na posição {getattr(p, 'lexpos', 'desconhecida')}")
     else:
         print("Erro de sintaxe! EOF inesperado. Verifique se você fechou todos os blocos, parênteses ou expressões iniciadas antes do fim do arquivo.")
 

@@ -2,14 +2,10 @@ from lexer import lexer  # Importa o lexer do arquivo lexer.py
 from parser import parser  # Importa o parser do arquivo parser.py
 
 def main():
-    # Código de exemplo para teste
+    # Código de exemplo para teste com operadores lógicos &&, || e !
     code = """
-    // Este é um comentário
-    move_up
-    move_down
-    hero + treasure
-    if (hero -> treasure) { attack } else { defend }
-    // Comentário após comandos
+    move_down // Movimento para baixo
+    if (hero) { attack } // Ataque quando herói for verdadeiro
     """
 
     print("=== Início do Analisador Léxico ===")
@@ -24,7 +20,7 @@ def main():
     print("=== Início do Analisador Sintático ===")
     try:
         result = parser.parse(code, lexer=lexer)
-        print("Análise Sintática bem-sucedida!")
+        print("Análise Sintática Finalizada!")
     except Exception as e:
         print(f"Erro durante a análise sintática: {e}")
     print("=== Fim do Analisador Sintático ===")
