@@ -6,7 +6,7 @@ _tabversion = '3.10'
 
 _lr_method = 'LALR'
 
-_lr_signature = 'ARROW ATTACK COMMENT DEFEND DIVIDE ELSE FOR IDENTIFIER IF JUMP LBRACE LPAREN MINUS MOVE_DOWN MOVE_LEFT MOVE_RIGHT MOVE_UP NUMBER PLUS RBRACE RPAREN SEMICOLON TIMES WHILES : cmd\n         | cmd S\n         | if_stmt\n         | if_stmt S\n         | while_stmt\n         | while_stmt S\n         | for_stmt\n         | for_stmt S\n         | expr\n         | expr S\n         | COMMENT\n         | COMMENT S\n         | emptyempty :cmd : move_cmd\n           | action_cmdmove_cmd : MOVE_UP\n                | MOVE_DOWN\n                | MOVE_LEFT\n                | MOVE_RIGHTaction_cmd : JUMP\n                  | ATTACK\n                  | DEFENDif_stmt : IF LPAREN expr RPAREN LBRACE S RBRACE ELSE LBRACE S RBRACEwhile_stmt : WHILE LPAREN expr RPAREN LBRACE S RBRACEfor_stmt : FOR LPAREN expr SEMICOLON expr SEMICOLON expr RPAREN LBRACE S RBRACEexpr : IDENTIFIER\n            | NUMBER\n            | expr PLUS expr\n            | expr MINUS expr\n            | expr TIMES expr\n            | expr DIVIDE expr\n            | expr ARROW expr'
+_lr_signature = 'ARROW ATTACK COMMENT DEFEND DIVIDE ELSE FOR IDENTIFIER IF JUMP LBRACE LPAREN MINUS MOVE_DOWN MOVE_LEFT MOVE_RIGHT MOVE_UP NUMBER PLUS RBRACE RPAREN SEMICOLON TIMES WHILES : cmd\n         | cmd S\n         | if_stmt\n         | if_stmt S\n         | while_stmt\n         | while_stmt S\n         | for_stmt\n         | for_stmt S\n         | expr\n         | expr S\n         | COMMENT\n         | COMMENT S\n         | empty\n         empty :cmd : move_cmd\n           | action_cmdmove_cmd : MOVE_UP\n                | MOVE_DOWN\n                | MOVE_LEFT\n                | MOVE_RIGHTaction_cmd : JUMP\n                  | ATTACK\n                  | DEFENDif_stmt : IF LPAREN expr RPAREN LBRACE S RBRACE ELSE LBRACE S RBRACEwhile_stmt : WHILE LPAREN expr RPAREN LBRACE S RBRACEfor_stmt : FOR LPAREN expr SEMICOLON expr SEMICOLON expr RPAREN LBRACE S RBRACEexpr : IDENTIFIER\n            | NUMBER\n            | expr PLUS expr\n            | expr MINUS expr\n            | expr TIMES expr\n            | expr DIVIDE expr\n            | expr ARROW expr'
     
 _lr_action_items = {'COMMENT':([0,2,3,4,5,6,7,9,10,14,15,16,17,18,19,20,21,22,37,38,39,40,41,48,49,55,59,60,63,64,],[7,7,7,7,7,7,7,-15,-16,-27,-28,-17,-18,-19,-20,-21,-22,-23,-29,-30,-31,-32,-33,7,7,-25,7,7,-24,-26,]),'IF':([0,2,3,4,5,6,7,9,10,14,15,16,17,18,19,20,21,22,37,38,39,40,41,48,49,55,59,60,63,64,],[11,11,11,11,11,11,11,-15,-16,-27,-28,-17,-18,-19,-20,-21,-22,-23,-29,-30,-31,-32,-33,11,11,-25,11,11,-24,-26,]),'WHILE':([0,2,3,4,5,6,7,9,10,14,15,16,17,18,19,20,21,22,37,38,39,40,41,48,49,55,59,60,63,64,],[12,12,12,12,12,12,12,-15,-16,-27,-28,-17,-18,-19,-20,-21,-22,-23,-29,-30,-31,-32,-33,12,12,-25,12,12,-24,-26,]),'FOR':([0,2,3,4,5,6,7,9,10,14,15,16,17,18,19,20,21,22,37,38,39,40,41,48,49,55,59,60,63,64,],[13,13,13,13,13,13,13,-15,-16,-27,-28,-17,-18,-19,-20,-21,-22,-23,-29,-30,-31,-32,-33,13,13,-25,13,13,-24,-26,]),'IDENTIFIER':([0,2,3,4,5,6,7,9,10,14,15,16,17,18,19,20,21,22,28,29,30,31,32,34,35,36,37,38,39,40,41,47,48,49,53,55,59,60,63,64,],[14,14,14,14,14,14,14,-15,-16,-27,-28,-17,-18,-19,-20,-21,-22,-23,14,14,14,14,14,14,14,14,-29,-30,-31,-32,-33,14,14,14,14,-25,14,14,-24,-26,]),'NUMBER':([0,2,3,4,5,6,7,9,10,14,15,16,17,18,19,20,21,22,28,29,30,31,32,34,35,36,37,38,39,40,41,47,48,49,53,55,59,60,63,64,],[15,15,15,15,15,15,15,-15,-16,-27,-28,-17,-18,-19,-20,-21,-22,-23,15,15,15,15,15,15,15,15,-29,-30,-31,-32,-33,15,15,15,15,-25,15,15,-24,-26,]),'$end':([0,1,2,3,4,5,6,7,8,9,10,14,15,16,17,18,19,20,21,22,23,24,25,26,27,33,37,38,39,40,41,55,63,64,],[-14,0,-1,-3,-5,-7,-9,-11,-13,-15,-16,-27,-28,-17,-18,-19,-20,-21,-22,-23,-2,-4,-6,-8,-10,-12,-29,-30,-31,-32,-33,-25,-24,-26,]),'MOVE_UP':([0,2,3,4,5,6,7,9,10,14,15,16,17,18,19,20,21,22,37,38,39,40,41,48,49,55,59,60,63,64,],[16,16,16,16,16,16,16,-15,-16,-27,-28,-17,-18,-19,-20,-21,-22,-23,-29,-30,-31,-32,-33,16,16,-25,16,16,-24,-26,]),'MOVE_DOWN':([0,2,3,4,5,6,7,9,10,14,15,16,17,18,19,20,21,22,37,38,39,40,41,48,49,55,59,60,63,64,],[17,17,17,17,17,17,17,-15,-16,-27,-28,-17,-18,-19,-20,-21,-22,-23,-29,-30,-31,-32,-33,17,17,-25,17,17,-24,-26,]),'MOVE_LEFT':([0,2,3,4,5,6,7,9,10,14,15,16,17,18,19,20,21,22,37,38,39,40,41,48,49,55,59,60,63,64,],[18,18,18,18,18,18,18,-15,-16,-27,-28,-17,-18,-19,-20,-21,-22,-23,-29,-30,-31,-32,-33,18,18,-25,18,18,-24,-26,]),'MOVE_RIGHT':([0,2,3,4,5,6,7,9,10,14,15,16,17,18,19,20,21,22,37,38,39,40,41,48,49,55,59,60,63,64,],[19,19,19,19,19,19,19,-15,-16,-27,-28,-17,-18,-19,-20,-21,-22,-23,-29,-30,-31,-32,-33,19,19,-25,19,19,-24,-26,]),'JUMP':([0,2,3,4,5,6,7,9,10,14,15,16,17,18,19,20,21,22,37,38,39,40,41,48,49,55,59,60,63,64,],[20,20,20,20,20,20,20,-15,-16,-27,-28,-17,-18,-19,-20,-21,-22,-23,-29,-30,-31,-32,-33,20,20,-25,20,20,-24,-26,]),'ATTACK':([0,2,3,4,5,6,7,9,10,14,15,16,17,18,19,20,21,22,37,38,39,40,41,48,49,55,59,60,63,64,],[21,21,21,21,21,21,21,-15,-16,-27,-28,-17,-18,-19,-20,-21,-22,-23,-29,-30,-31,-32,-33,21,21,-25,21,21,-24,-26,]),'DEFEND':([0,2,3,4,5,6,7,9,10,14,15,16,17,18,19,20,21,22,37,38,39,40,41,48,49,55,59,60,63,64,],[22,22,22,22,22,22,22,-15,-16,-27,-28,-17,-18,-19,-20,-21,-22,-23,-29,-30,-31,-32,-33,22,22,-25,22,22,-24,-26,]),'RBRACE':([2,3,4,5,6,7,8,9,10,14,15,16,17,18,19,20,21,22,23,24,25,26,27,33,37,38,39,40,41,48,49,51,52,55,59,60,61,62,63,64,],[-1,-3,-5,-7,-9,-11,-13,-15,-16,-27,-28,-17,-18,-19,-20,-21,-22,-23,-2,-4,-6,-8,-10,-12,-29,-30,-31,-32,-33,-14,-14,54,55,-25,-14,-14,63,64,-24,-26,]),'PLUS':([6,14,15,37,38,39,40,41,42,43,44,50,56,],[28,-27,-28,28,28,28,28,28,28,28,28,28,28,]),'MINUS':([6,14,15,37,38,39,40,41,42,43,44,50,56,],[29,-27,-28,29,29,29,29,29,29,29,29,29,29,]),'TIMES':([6,14,15,37,38,39,40,41,42,43,44,50,56,],[30,-27,-28,30,30,30,30,30,30,30,30,30,30,]),'DIVIDE':([6,14,15,37,38,39,40,41,42,43,44,50,56,],[31,-27,-28,31,31,31,31,31,31,31,31,31,31,]),'ARROW':([6,14,15,37,38,39,40,41,42,43,44,50,56,],[32,-27,-28,32,32,32,32,32,32,32,32,32,32,]),'LPAREN':([11,12,13,],[34,35,36,]),'RPAREN':([14,15,37,38,39,40,41,42,43,56,],[-27,-28,-29,-30,-31,-32,-33,45,46,58,]),'SEMICOLON':([14,15,37,38,39,40,41,44,50,],[-27,-28,-29,-30,-31,-32,-33,47,53,]),'LBRACE':([45,46,57,58,],[48,49,59,60,]),'ELSE':([54,],[57,]),}
 
@@ -40,24 +40,24 @@ _lr_productions = [
   ('S -> COMMENT','S',1,'p_S','parser.py',18),
   ('S -> COMMENT S','S',2,'p_S','parser.py',19),
   ('S -> empty','S',1,'p_S','parser.py',20),
-  ('empty -> <empty>','empty',0,'p_empty','parser.py',24),
-  ('cmd -> move_cmd','cmd',1,'p_cmd','parser.py',28),
-  ('cmd -> action_cmd','cmd',1,'p_cmd','parser.py',29),
-  ('move_cmd -> MOVE_UP','move_cmd',1,'p_move_cmd','parser.py',33),
-  ('move_cmd -> MOVE_DOWN','move_cmd',1,'p_move_cmd','parser.py',34),
-  ('move_cmd -> MOVE_LEFT','move_cmd',1,'p_move_cmd','parser.py',35),
-  ('move_cmd -> MOVE_RIGHT','move_cmd',1,'p_move_cmd','parser.py',36),
-  ('action_cmd -> JUMP','action_cmd',1,'p_action_cmd','parser.py',40),
-  ('action_cmd -> ATTACK','action_cmd',1,'p_action_cmd','parser.py',41),
-  ('action_cmd -> DEFEND','action_cmd',1,'p_action_cmd','parser.py',42),
-  ('if_stmt -> IF LPAREN expr RPAREN LBRACE S RBRACE ELSE LBRACE S RBRACE','if_stmt',11,'p_if_stmt','parser.py',46),
-  ('while_stmt -> WHILE LPAREN expr RPAREN LBRACE S RBRACE','while_stmt',7,'p_while_stmt','parser.py',50),
-  ('for_stmt -> FOR LPAREN expr SEMICOLON expr SEMICOLON expr RPAREN LBRACE S RBRACE','for_stmt',11,'p_for_stmt','parser.py',54),
-  ('expr -> IDENTIFIER','expr',1,'p_expr','parser.py',58),
-  ('expr -> NUMBER','expr',1,'p_expr','parser.py',59),
-  ('expr -> expr PLUS expr','expr',3,'p_expr','parser.py',60),
-  ('expr -> expr MINUS expr','expr',3,'p_expr','parser.py',61),
-  ('expr -> expr TIMES expr','expr',3,'p_expr','parser.py',62),
-  ('expr -> expr DIVIDE expr','expr',3,'p_expr','parser.py',63),
-  ('expr -> expr ARROW expr','expr',3,'p_expr','parser.py',64),
+  ('empty -> <empty>','empty',0,'p_empty','parser.py',25),
+  ('cmd -> move_cmd','cmd',1,'p_cmd','parser.py',29),
+  ('cmd -> action_cmd','cmd',1,'p_cmd','parser.py',30),
+  ('move_cmd -> MOVE_UP','move_cmd',1,'p_move_cmd','parser.py',34),
+  ('move_cmd -> MOVE_DOWN','move_cmd',1,'p_move_cmd','parser.py',35),
+  ('move_cmd -> MOVE_LEFT','move_cmd',1,'p_move_cmd','parser.py',36),
+  ('move_cmd -> MOVE_RIGHT','move_cmd',1,'p_move_cmd','parser.py',37),
+  ('action_cmd -> JUMP','action_cmd',1,'p_action_cmd','parser.py',41),
+  ('action_cmd -> ATTACK','action_cmd',1,'p_action_cmd','parser.py',42),
+  ('action_cmd -> DEFEND','action_cmd',1,'p_action_cmd','parser.py',43),
+  ('if_stmt -> IF LPAREN expr RPAREN LBRACE S RBRACE ELSE LBRACE S RBRACE','if_stmt',11,'p_if_stmt','parser.py',47),
+  ('while_stmt -> WHILE LPAREN expr RPAREN LBRACE S RBRACE','while_stmt',7,'p_while_stmt','parser.py',51),
+  ('for_stmt -> FOR LPAREN expr SEMICOLON expr SEMICOLON expr RPAREN LBRACE S RBRACE','for_stmt',11,'p_for_stmt','parser.py',55),
+  ('expr -> IDENTIFIER','expr',1,'p_expr','parser.py',59),
+  ('expr -> NUMBER','expr',1,'p_expr','parser.py',60),
+  ('expr -> expr PLUS expr','expr',3,'p_expr','parser.py',61),
+  ('expr -> expr MINUS expr','expr',3,'p_expr','parser.py',62),
+  ('expr -> expr TIMES expr','expr',3,'p_expr','parser.py',63),
+  ('expr -> expr DIVIDE expr','expr',3,'p_expr','parser.py',64),
+  ('expr -> expr ARROW expr','expr',3,'p_expr','parser.py',65),
 ]
