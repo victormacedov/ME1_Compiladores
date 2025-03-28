@@ -17,7 +17,8 @@ def p_S(p):
          | expr S
          | COMMENT
          | COMMENT S
-         | empty'''  # Suporte para entradas vazias
+         | empty
+         '''
     pass
 
 def p_empty(p):
