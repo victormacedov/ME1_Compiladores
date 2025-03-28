@@ -69,7 +69,7 @@ def p_error(p):
     if p:
         print(f"Erro de sintaxe! Token inesperado: {p.type} ('{p.value}') na linha {getattr(p, 'lineno', 'desconhecida')}")
     else:
-        print("Erro de sintaxe! EOF inesperado.")
+        print("Erro de sintaxe! EOF inesperado. Verifique se você fechou todos os blocos, parênteses ou expressões iniciadas antes do fim do arquivo.")
 
 # Criação do parser
 parser = yacc.yacc()
