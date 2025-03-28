@@ -8,13 +8,13 @@ tokens = [
     'NUMBER', 'IDENTIFIER',
     'IF', 'ELSE', 'WHILE', 'FOR',
     'LPAREN', 'RPAREN', 'LBRACE', 'RBRACE',
-    'SEMICOLON', 'COMMENT'  # Adiciona COMMENT à lista de tokens
+    'SEMICOLON', 'COMMENT'
 ]
 
 # Token para comentários
 def t_COMMENT(t):
     r'//.*'
-    return t  # Retorna o token para exibição
+    return t
 
 # Token ARROW
 t_ARROW = r'->'
