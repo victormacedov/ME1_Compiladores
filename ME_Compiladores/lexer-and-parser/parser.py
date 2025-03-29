@@ -1,3 +1,4 @@
+# Análise Sintática
 import ply.yacc as yacc
 
 # Importar tokens do lexer

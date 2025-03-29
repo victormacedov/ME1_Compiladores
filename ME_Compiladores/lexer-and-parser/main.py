@@ -3,7 +3,7 @@ from parser import parser  # Importa o parser do arquivo parser.py
 
 def main():
     code = """
-    while (enemy - trap) {
+    for (hero; enemy - 3; treasure + 5) {
         attack
     }
     """
