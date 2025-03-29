@@ -10,21 +10,15 @@ precedence = (
     ('right', 'NOT'),
     ('left', 'PLUS', 'MINUS'),
     ('left', 'TIMES', 'DIVIDE'),
-    ('left', 'ARROW'),
 )
 
 # Regras de gramática
 def p_S(p):
-    '''S : cmd S
-         | if_stmt S
-         | while_stmt S
-         | for_stmt S
-         | expr S
-         | empty'''
-    pass
-
-def p_empty(p):
-    '''empty :'''
+    '''S : cmd
+         | if_stmt
+         | while_stmt
+         | for_stmt
+         '''
     pass
 
 def p_cmd(p):
@@ -46,8 +40,7 @@ def p_action_cmd(p):
     pass
 
 def p_if_stmt(p):
-    '''if_stmt : IF LPAREN expr RPAREN LBRACE S RBRACE
-               | IF LPAREN expr RPAREN LBRACE S RBRACE ELSE LBRACE S RBRACE'''
+    '''if_stmt : IF LPAREN expr RPAREN LBRACE S RBRACE ELSE LBRACE S RBRACE'''
     pass
 
 def p_while_stmt(p):
@@ -63,12 +56,7 @@ def p_expr(p):
             | NUMBER
             | expr PLUS expr
             | expr MINUS expr
-            | expr TIMES expr
-            | expr DIVIDE expr
-            | expr ARROW expr
-            | expr AND expr
-            | expr OR expr
-            | NOT expr'''
+            '''
     pass
 
 # Tratamento de erros sintáticos

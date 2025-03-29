@@ -2,10 +2,10 @@ from lexer import lexer  # Importa o lexer do arquivo lexer.py
 from parser import parser  # Importa o parser do arquivo parser.py
 
 def main():
-    # Código de exemplo para teste com operadores lógicos &&, || e !
     code = """
-    move_down // Movimento para baixo
-    if (hero) { attack } // Ataque quando herói for verdadeiro
+    while (enemy - trap) {
+        attack
+    }
     """
 
     print("=== Início do Analisador Léxico ===")

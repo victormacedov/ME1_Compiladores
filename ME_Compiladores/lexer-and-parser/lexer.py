@@ -4,7 +4,7 @@ import ply.lex as lex
 tokens = [
     'MOVE_UP', 'MOVE_DOWN', 'MOVE_LEFT', 'MOVE_RIGHT',
     'JUMP', 'ATTACK', 'DEFEND',
-    'PLUS', 'MINUS', 'TIMES', 'DIVIDE', 'ARROW',
+    'PLUS', 'MINUS', 'TIMES', 'DIVIDE',
     'NUMBER', 'IDENTIFIER',
     'IF', 'ELSE', 'WHILE', 'FOR',
     'AND', 'OR', 'NOT',
@@ -35,9 +35,6 @@ reserved = {
 def t_COMMENT(t):
     r'//.*'
     pass  # Ignorar comentários
-
-# Token ARROW
-t_ARROW = r'->'
 
 # Operadores lógicos
 t_AND = r'&&'

@@ -2,83 +2,76 @@ Created by PLY version 3.11 (http://www.dabeaz.com/ply)
 
 Unused terminals:
 
+    AND
     COMMENT
+    DIVIDE
+    NOT
+    OR
+    TIMES
 
 Grammar
 
 Rule 0     S' -> S
-Rule 1     S -> cmd S
-Rule 2     S -> if_stmt S
-Rule 3     S -> while_stmt S
-Rule 4     S -> for_stmt S
-Rule 5     S -> expr S
-Rule 6     S -> empty
-Rule 7     empty -> <empty>
-Rule 8     cmd -> move_cmd
-Rule 9     cmd -> action_cmd
-Rule 10    move_cmd -> MOVE_UP
-Rule 11    move_cmd -> MOVE_DOWN
-Rule 12    move_cmd -> MOVE_LEFT
-Rule 13    move_cmd -> MOVE_RIGHT
-Rule 14    action_cmd -> JUMP
-Rule 15    action_cmd -> ATTACK
-Rule 16    action_cmd -> DEFEND
-Rule 17    if_stmt -> IF LPAREN expr RPAREN LBRACE S RBRACE
-Rule 18    if_stmt -> IF LPAREN expr RPAREN LBRACE S RBRACE ELSE LBRACE S RBRACE
-Rule 19    while_stmt -> WHILE LPAREN expr RPAREN LBRACE S RBRACE
-Rule 20    for_stmt -> FOR LPAREN expr SEMICOLON expr SEMICOLON expr RPAREN LBRACE S RBRACE
-Rule 21    expr -> IDENTIFIER
-Rule 22    expr -> NUMBER
-Rule 23    expr -> expr PLUS expr
-Rule 24    expr -> expr MINUS expr
-Rule 25    expr -> expr TIMES expr
-Rule 26    expr -> expr DIVIDE expr
-Rule 27    expr -> expr ARROW expr
-Rule 28    expr -> expr AND expr
-Rule 29    expr -> expr OR expr
-Rule 30    expr -> NOT expr
+Rule 1     S -> cmd
+Rule 2     S -> if_stmt
+Rule 3     S -> while_stmt
+Rule 4     S -> for_stmt
+Rule 5     cmd -> move_cmd
+Rule 6     cmd -> action_cmd
+Rule 7     move_cmd -> MOVE_UP
+Rule 8     move_cmd -> MOVE_DOWN
+Rule 9     move_cmd -> MOVE_LEFT
+Rule 10    move_cmd -> MOVE_RIGHT
+Rule 11    action_cmd -> JUMP
+Rule 12    action_cmd -> ATTACK
+Rule 13    action_cmd -> DEFEND
+Rule 14    if_stmt -> IF LPAREN expr RPAREN LBRACE S RBRACE ELSE LBRACE S RBRACE
+Rule 15    while_stmt -> WHILE LPAREN expr RPAREN LBRACE S RBRACE
+Rule 16    for_stmt -> FOR LPAREN expr SEMICOLON expr SEMICOLON expr RPAREN LBRACE S RBRACE
+Rule 17    expr -> IDENTIFIER
+Rule 18    expr -> NUMBER
+Rule 19    expr -> expr PLUS expr
+Rule 20    expr -> expr MINUS expr
 
 Terminals, with rules where they appear
 
-AND                  : 28
-ARROW                : 27
-ATTACK               : 15
+AND                  : 
+ATTACK               : 12
 COMMENT              : 
-DEFEND               : 16
-DIVIDE               : 26
-ELSE                 : 18
-FOR                  : 20
-IDENTIFIER           : 21
-IF                   : 17 18
-JUMP                 : 14
-LBRACE               : 17 18 18 19 20
-LPAREN               : 17 18 19 20
-MINUS                : 24
-MOVE_DOWN            : 11
-MOVE_LEFT            : 12
-MOVE_RIGHT           : 13
-MOVE_UP              : 10
-NOT                  : 30
-NUMBER               : 22
-OR                   : 29
-PLUS                 : 23
-RBRACE               : 17 18 18 19 20
-RPAREN               : 17 18 19 20
-SEMICOLON            : 20 20
-TIMES                : 25
-WHILE                : 19
+DEFEND               : 13
+DIVIDE               : 
+ELSE                 : 14
+FOR                  : 16
+IDENTIFIER           : 17
+IF                   : 14
+JUMP                 : 11
+LBRACE               : 14 14 15 16
+LPAREN               : 14 15 16
+MINUS                : 20
+MOVE_DOWN            : 8
+MOVE_LEFT            : 9
+MOVE_RIGHT           : 10
+MOVE_UP              : 7
+NOT                  : 
+NUMBER               : 18
+OR                   : 
+PLUS                 : 19
+RBRACE               : 14 14 15 16
+RPAREN               : 14 15 16
+SEMICOLON            : 16 16
+TIMES                : 
+WHILE                : 15
 error                : 
 
 Nonterminals, with rules where they appear
 
-S                    : 1 2 3 4 5 17 18 18 19 20 0
-action_cmd           : 9
+S                    : 14 14 15 16 0
+action_cmd           : 6
 cmd                  : 1
-empty                : 6
-expr                 : 5 17 18 19 20 20 20 23 23 24 24 25 25 26 26 27 27 28 28 29 29 30
+expr                 : 14 15 16 16 16 19 19 20 20
 for_stmt             : 4
 if_stmt              : 2
-move_cmd             : 8
+move_cmd             : 5
 while_stmt           : 3
 
 Parsing method: LALR
@@ -86,61 +79,41 @@ Parsing method: LALR
 state 0
 
     (0) S' -> . S
-    (1) S -> . cmd S
-    (2) S -> . if_stmt S
-    (3) S -> . while_stmt S
-    (4) S -> . for_stmt S
-    (5) S -> . expr S
-    (6) S -> . empty
-    (8) cmd -> . move_cmd
-    (9) cmd -> . action_cmd
-    (17) if_stmt -> . IF LPAREN expr RPAREN LBRACE S RBRACE
-    (18) if_stmt -> . IF LPAREN expr RPAREN LBRACE S RBRACE ELSE LBRACE S RBRACE
-    (19) while_stmt -> . WHILE LPAREN expr RPAREN LBRACE S RBRACE
-    (20) for_stmt -> . FOR LPAREN expr SEMICOLON expr SEMICOLON expr RPAREN LBRACE S RBRACE
-    (21) expr -> . IDENTIFIER
-    (22) expr -> . NUMBER
-    (23) expr -> . expr PLUS expr
-    (24) expr -> . expr MINUS expr
-    (25) expr -> . expr TIMES expr
-    (26) expr -> . expr DIVIDE expr
-    (27) expr -> . expr ARROW expr
-    (28) expr -> . expr AND expr
-    (29) expr -> . expr OR expr
-    (30) expr -> . NOT expr
-    (7) empty -> .
-    (10) move_cmd -> . MOVE_UP
-    (11) move_cmd -> . MOVE_DOWN
-    (12) move_cmd -> . MOVE_LEFT
-    (13) move_cmd -> . MOVE_RIGHT
-    (14) action_cmd -> . JUMP
-    (15) action_cmd -> . ATTACK
-    (16) action_cmd -> . DEFEND
+    (1) S -> . cmd
+    (2) S -> . if_stmt
+    (3) S -> . while_stmt
+    (4) S -> . for_stmt
+    (5) cmd -> . move_cmd
+    (6) cmd -> . action_cmd
+    (14) if_stmt -> . IF LPAREN expr RPAREN LBRACE S RBRACE ELSE LBRACE S RBRACE
+    (15) while_stmt -> . WHILE LPAREN expr RPAREN LBRACE S RBRACE
+    (16) for_stmt -> . FOR LPAREN expr SEMICOLON expr SEMICOLON expr RPAREN LBRACE S RBRACE
+    (7) move_cmd -> . MOVE_UP
+    (8) move_cmd -> . MOVE_DOWN
+    (9) move_cmd -> . MOVE_LEFT
+    (10) move_cmd -> . MOVE_RIGHT
+    (11) action_cmd -> . JUMP
+    (12) action_cmd -> . ATTACK
+    (13) action_cmd -> . DEFEND
 
-    IF              shift and go to state 10
-    WHILE           shift and go to state 11
-    FOR             shift and go to state 12
-    IDENTIFIER      shift and go to state 13
-    NUMBER          shift and go to state 14
-    NOT             shift and go to state 15
-    $end            reduce using rule 7 (empty -> .)
-    MOVE_UP         shift and go to state 16
-    MOVE_DOWN       shift and go to state 17
-    MOVE_LEFT       shift and go to state 18
-    MOVE_RIGHT      shift and go to state 19
-    JUMP            shift and go to state 20
-    ATTACK          shift and go to state 21
-    DEFEND          shift and go to state 22
+    IF              shift and go to state 8
+    WHILE           shift and go to state 9
+    FOR             shift and go to state 10
+    MOVE_UP         shift and go to state 11
+    MOVE_DOWN       shift and go to state 12
+    MOVE_LEFT       shift and go to state 13
+    MOVE_RIGHT      shift and go to state 14
+    JUMP            shift and go to state 15
+    ATTACK          shift and go to state 16
+    DEFEND          shift and go to state 17
 
     S                              shift and go to state 1
     cmd                            shift and go to state 2
     if_stmt                        shift and go to state 3
     while_stmt                     shift and go to state 4
     for_stmt                       shift and go to state 5
-    expr                           shift and go to state 6
-    empty                          shift and go to state 7
-    move_cmd                       shift and go to state 8
-    action_cmd                     shift and go to state 9
+    move_cmd                       shift and go to state 6
+    action_cmd                     shift and go to state 7
 
 state 1
 
@@ -150,1741 +123,564 @@ state 1
 
 state 2
 
-    (1) S -> cmd . S
-    (1) S -> . cmd S
-    (2) S -> . if_stmt S
-    (3) S -> . while_stmt S
-    (4) S -> . for_stmt S
-    (5) S -> . expr S
-    (6) S -> . empty
-    (8) cmd -> . move_cmd
-    (9) cmd -> . action_cmd
-    (17) if_stmt -> . IF LPAREN expr RPAREN LBRACE S RBRACE
-    (18) if_stmt -> . IF LPAREN expr RPAREN LBRACE S RBRACE ELSE LBRACE S RBRACE
-    (19) while_stmt -> . WHILE LPAREN expr RPAREN LBRACE S RBRACE
-    (20) for_stmt -> . FOR LPAREN expr SEMICOLON expr SEMICOLON expr RPAREN LBRACE S RBRACE
-    (21) expr -> . IDENTIFIER
-    (22) expr -> . NUMBER
-    (23) expr -> . expr PLUS expr
-    (24) expr -> . expr MINUS expr
-    (25) expr -> . expr TIMES expr
-    (26) expr -> . expr DIVIDE expr
-    (27) expr -> . expr ARROW expr
-    (28) expr -> . expr AND expr
-    (29) expr -> . expr OR expr
-    (30) expr -> . NOT expr
-    (7) empty -> .
-    (10) move_cmd -> . MOVE_UP
-    (11) move_cmd -> . MOVE_DOWN
-    (12) move_cmd -> . MOVE_LEFT
-    (13) move_cmd -> . MOVE_RIGHT
-    (14) action_cmd -> . JUMP
-    (15) action_cmd -> . ATTACK
-    (16) action_cmd -> . DEFEND
+    (1) S -> cmd .
 
-    IF              shift and go to state 10
-    WHILE           shift and go to state 11
-    FOR             shift and go to state 12
-    IDENTIFIER      shift and go to state 13
-    NUMBER          shift and go to state 14
-    NOT             shift and go to state 15
-    $end            reduce using rule 7 (empty -> .)
-    RBRACE          reduce using rule 7 (empty -> .)
-    MOVE_UP         shift and go to state 16
-    MOVE_DOWN       shift and go to state 17
-    MOVE_LEFT       shift and go to state 18
-    MOVE_RIGHT      shift and go to state 19
-    JUMP            shift and go to state 20
-    ATTACK          shift and go to state 21
-    DEFEND          shift and go to state 22
+    $end            reduce using rule 1 (S -> cmd .)
+    RBRACE          reduce using rule 1 (S -> cmd .)
 
-    cmd                            shift and go to state 2
-    S                              shift and go to state 23
-    if_stmt                        shift and go to state 3
-    while_stmt                     shift and go to state 4
-    for_stmt                       shift and go to state 5
-    expr                           shift and go to state 6
-    empty                          shift and go to state 7
-    move_cmd                       shift and go to state 8
-    action_cmd                     shift and go to state 9
 
 state 3
 
-    (2) S -> if_stmt . S
-    (1) S -> . cmd S
-    (2) S -> . if_stmt S
-    (3) S -> . while_stmt S
-    (4) S -> . for_stmt S
-    (5) S -> . expr S
-    (6) S -> . empty
-    (8) cmd -> . move_cmd
-    (9) cmd -> . action_cmd
-    (17) if_stmt -> . IF LPAREN expr RPAREN LBRACE S RBRACE
-    (18) if_stmt -> . IF LPAREN expr RPAREN LBRACE S RBRACE ELSE LBRACE S RBRACE
-    (19) while_stmt -> . WHILE LPAREN expr RPAREN LBRACE S RBRACE
-    (20) for_stmt -> . FOR LPAREN expr SEMICOLON expr SEMICOLON expr RPAREN LBRACE S RBRACE
-    (21) expr -> . IDENTIFIER
-    (22) expr -> . NUMBER
-    (23) expr -> . expr PLUS expr
-    (24) expr -> . expr MINUS expr
-    (25) expr -> . expr TIMES expr
-    (26) expr -> . expr DIVIDE expr
-    (27) expr -> . expr ARROW expr
-    (28) expr -> . expr AND expr
-    (29) expr -> . expr OR expr
-    (30) expr -> . NOT expr
-    (7) empty -> .
-    (10) move_cmd -> . MOVE_UP
-    (11) move_cmd -> . MOVE_DOWN
-    (12) move_cmd -> . MOVE_LEFT
-    (13) move_cmd -> . MOVE_RIGHT
-    (14) action_cmd -> . JUMP
-    (15) action_cmd -> . ATTACK
-    (16) action_cmd -> . DEFEND
+    (2) S -> if_stmt .
 
-    IF              shift and go to state 10
-    WHILE           shift and go to state 11
-    FOR             shift and go to state 12
-    IDENTIFIER      shift and go to state 13
-    NUMBER          shift and go to state 14
-    NOT             shift and go to state 15
-    $end            reduce using rule 7 (empty -> .)
-    RBRACE          reduce using rule 7 (empty -> .)
-    MOVE_UP         shift and go to state 16
-    MOVE_DOWN       shift and go to state 17
-    MOVE_LEFT       shift and go to state 18
-    MOVE_RIGHT      shift and go to state 19
-    JUMP            shift and go to state 20
-    ATTACK          shift and go to state 21
-    DEFEND          shift and go to state 22
+    $end            reduce using rule 2 (S -> if_stmt .)
+    RBRACE          reduce using rule 2 (S -> if_stmt .)
 
-    if_stmt                        shift and go to state 3
-    S                              shift and go to state 24
-    cmd                            shift and go to state 2
-    while_stmt                     shift and go to state 4
-    for_stmt                       shift and go to state 5
-    expr                           shift and go to state 6
-    empty                          shift and go to state 7
-    move_cmd                       shift and go to state 8
-    action_cmd                     shift and go to state 9
 
 state 4
 
-    (3) S -> while_stmt . S
-    (1) S -> . cmd S
-    (2) S -> . if_stmt S
-    (3) S -> . while_stmt S
-    (4) S -> . for_stmt S
-    (5) S -> . expr S
-    (6) S -> . empty
-    (8) cmd -> . move_cmd
-    (9) cmd -> . action_cmd
-    (17) if_stmt -> . IF LPAREN expr RPAREN LBRACE S RBRACE
-    (18) if_stmt -> . IF LPAREN expr RPAREN LBRACE S RBRACE ELSE LBRACE S RBRACE
-    (19) while_stmt -> . WHILE LPAREN expr RPAREN LBRACE S RBRACE
-    (20) for_stmt -> . FOR LPAREN expr SEMICOLON expr SEMICOLON expr RPAREN LBRACE S RBRACE
-    (21) expr -> . IDENTIFIER
-    (22) expr -> . NUMBER
-    (23) expr -> . expr PLUS expr
-    (24) expr -> . expr MINUS expr
-    (25) expr -> . expr TIMES expr
-    (26) expr -> . expr DIVIDE expr
-    (27) expr -> . expr ARROW expr
-    (28) expr -> . expr AND expr
-    (29) expr -> . expr OR expr
-    (30) expr -> . NOT expr
-    (7) empty -> .
-    (10) move_cmd -> . MOVE_UP
-    (11) move_cmd -> . MOVE_DOWN
-    (12) move_cmd -> . MOVE_LEFT
-    (13) move_cmd -> . MOVE_RIGHT
-    (14) action_cmd -> . JUMP
-    (15) action_cmd -> . ATTACK
-    (16) action_cmd -> . DEFEND
+    (3) S -> while_stmt .
 
-    IF              shift and go to state 10
-    WHILE           shift and go to state 11
-    FOR             shift and go to state 12
-    IDENTIFIER      shift and go to state 13
-    NUMBER          shift and go to state 14
-    NOT             shift and go to state 15
-    $end            reduce using rule 7 (empty -> .)
-    RBRACE          reduce using rule 7 (empty -> .)
-    MOVE_UP         shift and go to state 16
-    MOVE_DOWN       shift and go to state 17
-    MOVE_LEFT       shift and go to state 18
-    MOVE_RIGHT      shift and go to state 19
-    JUMP            shift and go to state 20
-    ATTACK          shift and go to state 21
-    DEFEND          shift and go to state 22
+    $end            reduce using rule 3 (S -> while_stmt .)
+    RBRACE          reduce using rule 3 (S -> while_stmt .)
 
-    while_stmt                     shift and go to state 4
-    S                              shift and go to state 25
-    cmd                            shift and go to state 2
-    if_stmt                        shift and go to state 3
-    for_stmt                       shift and go to state 5
-    expr                           shift and go to state 6
-    empty                          shift and go to state 7
-    move_cmd                       shift and go to state 8
-    action_cmd                     shift and go to state 9
 
 state 5
 
-    (4) S -> for_stmt . S
-    (1) S -> . cmd S
-    (2) S -> . if_stmt S
-    (3) S -> . while_stmt S
-    (4) S -> . for_stmt S
-    (5) S -> . expr S
-    (6) S -> . empty
-    (8) cmd -> . move_cmd
-    (9) cmd -> . action_cmd
-    (17) if_stmt -> . IF LPAREN expr RPAREN LBRACE S RBRACE
-    (18) if_stmt -> . IF LPAREN expr RPAREN LBRACE S RBRACE ELSE LBRACE S RBRACE
-    (19) while_stmt -> . WHILE LPAREN expr RPAREN LBRACE S RBRACE
-    (20) for_stmt -> . FOR LPAREN expr SEMICOLON expr SEMICOLON expr RPAREN LBRACE S RBRACE
-    (21) expr -> . IDENTIFIER
-    (22) expr -> . NUMBER
-    (23) expr -> . expr PLUS expr
-    (24) expr -> . expr MINUS expr
-    (25) expr -> . expr TIMES expr
-    (26) expr -> . expr DIVIDE expr
-    (27) expr -> . expr ARROW expr
-    (28) expr -> . expr AND expr
-    (29) expr -> . expr OR expr
-    (30) expr -> . NOT expr
-    (7) empty -> .
-    (10) move_cmd -> . MOVE_UP
-    (11) move_cmd -> . MOVE_DOWN
-    (12) move_cmd -> . MOVE_LEFT
-    (13) move_cmd -> . MOVE_RIGHT
-    (14) action_cmd -> . JUMP
-    (15) action_cmd -> . ATTACK
-    (16) action_cmd -> . DEFEND
+    (4) S -> for_stmt .
 
-    IF              shift and go to state 10
-    WHILE           shift and go to state 11
-    FOR             shift and go to state 12
-    IDENTIFIER      shift and go to state 13
-    NUMBER          shift and go to state 14
-    NOT             shift and go to state 15
-    $end            reduce using rule 7 (empty -> .)
-    RBRACE          reduce using rule 7 (empty -> .)
-    MOVE_UP         shift and go to state 16
-    MOVE_DOWN       shift and go to state 17
-    MOVE_LEFT       shift and go to state 18
-    MOVE_RIGHT      shift and go to state 19
-    JUMP            shift and go to state 20
-    ATTACK          shift and go to state 21
-    DEFEND          shift and go to state 22
+    $end            reduce using rule 4 (S -> for_stmt .)
+    RBRACE          reduce using rule 4 (S -> for_stmt .)
 
-    for_stmt                       shift and go to state 5
-    S                              shift and go to state 26
-    cmd                            shift and go to state 2
-    if_stmt                        shift and go to state 3
-    while_stmt                     shift and go to state 4
-    expr                           shift and go to state 6
-    empty                          shift and go to state 7
-    move_cmd                       shift and go to state 8
-    action_cmd                     shift and go to state 9
 
 state 6
 
-    (5) S -> expr . S
-    (23) expr -> expr . PLUS expr
-    (24) expr -> expr . MINUS expr
-    (25) expr -> expr . TIMES expr
-    (26) expr -> expr . DIVIDE expr
-    (27) expr -> expr . ARROW expr
-    (28) expr -> expr . AND expr
-    (29) expr -> expr . OR expr
-    (1) S -> . cmd S
-    (2) S -> . if_stmt S
-    (3) S -> . while_stmt S
-    (4) S -> . for_stmt S
-    (5) S -> . expr S
-    (6) S -> . empty
-    (8) cmd -> . move_cmd
-    (9) cmd -> . action_cmd
-    (17) if_stmt -> . IF LPAREN expr RPAREN LBRACE S RBRACE
-    (18) if_stmt -> . IF LPAREN expr RPAREN LBRACE S RBRACE ELSE LBRACE S RBRACE
-    (19) while_stmt -> . WHILE LPAREN expr RPAREN LBRACE S RBRACE
-    (20) for_stmt -> . FOR LPAREN expr SEMICOLON expr SEMICOLON expr RPAREN LBRACE S RBRACE
-    (21) expr -> . IDENTIFIER
-    (22) expr -> . NUMBER
-    (23) expr -> . expr PLUS expr
-    (24) expr -> . expr MINUS expr
-    (25) expr -> . expr TIMES expr
-    (26) expr -> . expr DIVIDE expr
-    (27) expr -> . expr ARROW expr
-    (28) expr -> . expr AND expr
-    (29) expr -> . expr OR expr
-    (30) expr -> . NOT expr
-    (7) empty -> .
-    (10) move_cmd -> . MOVE_UP
-    (11) move_cmd -> . MOVE_DOWN
-    (12) move_cmd -> . MOVE_LEFT
-    (13) move_cmd -> . MOVE_RIGHT
-    (14) action_cmd -> . JUMP
-    (15) action_cmd -> . ATTACK
-    (16) action_cmd -> . DEFEND
+    (5) cmd -> move_cmd .
 
-    PLUS            shift and go to state 28
-    MINUS           shift and go to state 29
-    TIMES           shift and go to state 30
-    DIVIDE          shift and go to state 31
-    ARROW           shift and go to state 32
-    AND             shift and go to state 33
-    OR              shift and go to state 34
-    IF              shift and go to state 10
-    WHILE           shift and go to state 11
-    FOR             shift and go to state 12
-    IDENTIFIER      shift and go to state 13
-    NUMBER          shift and go to state 14
-    NOT             shift and go to state 15
-    $end            reduce using rule 7 (empty -> .)
-    RBRACE          reduce using rule 7 (empty -> .)
-    MOVE_UP         shift and go to state 16
-    MOVE_DOWN       shift and go to state 17
-    MOVE_LEFT       shift and go to state 18
-    MOVE_RIGHT      shift and go to state 19
-    JUMP            shift and go to state 20
-    ATTACK          shift and go to state 21
-    DEFEND          shift and go to state 22
+    $end            reduce using rule 5 (cmd -> move_cmd .)
+    RBRACE          reduce using rule 5 (cmd -> move_cmd .)
 
-    expr                           shift and go to state 6
-    S                              shift and go to state 27
-    cmd                            shift and go to state 2
-    if_stmt                        shift and go to state 3
-    while_stmt                     shift and go to state 4
-    for_stmt                       shift and go to state 5
-    empty                          shift and go to state 7
-    move_cmd                       shift and go to state 8
-    action_cmd                     shift and go to state 9
 
 state 7
 
-    (6) S -> empty .
+    (6) cmd -> action_cmd .
 
-    $end            reduce using rule 6 (S -> empty .)
-    RBRACE          reduce using rule 6 (S -> empty .)
+    $end            reduce using rule 6 (cmd -> action_cmd .)
+    RBRACE          reduce using rule 6 (cmd -> action_cmd .)
 
 
 state 8
 
-    (8) cmd -> move_cmd .
+    (14) if_stmt -> IF . LPAREN expr RPAREN LBRACE S RBRACE ELSE LBRACE S RBRACE
 
-    IF              reduce using rule 8 (cmd -> move_cmd .)
-    WHILE           reduce using rule 8 (cmd -> move_cmd .)
-    FOR             reduce using rule 8 (cmd -> move_cmd .)
-    IDENTIFIER      reduce using rule 8 (cmd -> move_cmd .)
-    NUMBER          reduce using rule 8 (cmd -> move_cmd .)
-    NOT             reduce using rule 8 (cmd -> move_cmd .)
-    MOVE_UP         reduce using rule 8 (cmd -> move_cmd .)
-    MOVE_DOWN       reduce using rule 8 (cmd -> move_cmd .)
-    MOVE_LEFT       reduce using rule 8 (cmd -> move_cmd .)
-    MOVE_RIGHT      reduce using rule 8 (cmd -> move_cmd .)
-    JUMP            reduce using rule 8 (cmd -> move_cmd .)
-    ATTACK          reduce using rule 8 (cmd -> move_cmd .)
-    DEFEND          reduce using rule 8 (cmd -> move_cmd .)
-    $end            reduce using rule 8 (cmd -> move_cmd .)
-    RBRACE          reduce using rule 8 (cmd -> move_cmd .)
+    LPAREN          shift and go to state 18
 
 
 state 9
 
-    (9) cmd -> action_cmd .
+    (15) while_stmt -> WHILE . LPAREN expr RPAREN LBRACE S RBRACE
 
-    IF              reduce using rule 9 (cmd -> action_cmd .)
-    WHILE           reduce using rule 9 (cmd -> action_cmd .)
-    FOR             reduce using rule 9 (cmd -> action_cmd .)
-    IDENTIFIER      reduce using rule 9 (cmd -> action_cmd .)
-    NUMBER          reduce using rule 9 (cmd -> action_cmd .)
-    NOT             reduce using rule 9 (cmd -> action_cmd .)
-    MOVE_UP         reduce using rule 9 (cmd -> action_cmd .)
-    MOVE_DOWN       reduce using rule 9 (cmd -> action_cmd .)
-    MOVE_LEFT       reduce using rule 9 (cmd -> action_cmd .)
-    MOVE_RIGHT      reduce using rule 9 (cmd -> action_cmd .)
-    JUMP            reduce using rule 9 (cmd -> action_cmd .)
-    ATTACK          reduce using rule 9 (cmd -> action_cmd .)
-    DEFEND          reduce using rule 9 (cmd -> action_cmd .)
-    $end            reduce using rule 9 (cmd -> action_cmd .)
-    RBRACE          reduce using rule 9 (cmd -> action_cmd .)
+    LPAREN          shift and go to state 19
 
 
 state 10
 
-    (17) if_stmt -> IF . LPAREN expr RPAREN LBRACE S RBRACE
-    (18) if_stmt -> IF . LPAREN expr RPAREN LBRACE S RBRACE ELSE LBRACE S RBRACE
+    (16) for_stmt -> FOR . LPAREN expr SEMICOLON expr SEMICOLON expr RPAREN LBRACE S RBRACE
 
-    LPAREN          shift and go to state 35
+    LPAREN          shift and go to state 20
 
 
 state 11
 
-    (19) while_stmt -> WHILE . LPAREN expr RPAREN LBRACE S RBRACE
+    (7) move_cmd -> MOVE_UP .
 
-    LPAREN          shift and go to state 36
+    $end            reduce using rule 7 (move_cmd -> MOVE_UP .)
+    RBRACE          reduce using rule 7 (move_cmd -> MOVE_UP .)
 
 
 state 12
 
-    (20) for_stmt -> FOR . LPAREN expr SEMICOLON expr SEMICOLON expr RPAREN LBRACE S RBRACE
+    (8) move_cmd -> MOVE_DOWN .
 
-    LPAREN          shift and go to state 37
+    $end            reduce using rule 8 (move_cmd -> MOVE_DOWN .)
+    RBRACE          reduce using rule 8 (move_cmd -> MOVE_DOWN .)
 
 
 state 13
 
-    (21) expr -> IDENTIFIER .
+    (9) move_cmd -> MOVE_LEFT .
 
-    PLUS            reduce using rule 21 (expr -> IDENTIFIER .)
-    MINUS           reduce using rule 21 (expr -> IDENTIFIER .)
-    TIMES           reduce using rule 21 (expr -> IDENTIFIER .)
-    DIVIDE          reduce using rule 21 (expr -> IDENTIFIER .)
-    ARROW           reduce using rule 21 (expr -> IDENTIFIER .)
-    AND             reduce using rule 21 (expr -> IDENTIFIER .)
-    OR              reduce using rule 21 (expr -> IDENTIFIER .)
-    IF              reduce using rule 21 (expr -> IDENTIFIER .)
-    WHILE           reduce using rule 21 (expr -> IDENTIFIER .)
-    FOR             reduce using rule 21 (expr -> IDENTIFIER .)
-    IDENTIFIER      reduce using rule 21 (expr -> IDENTIFIER .)
-    NUMBER          reduce using rule 21 (expr -> IDENTIFIER .)
-    NOT             reduce using rule 21 (expr -> IDENTIFIER .)
-    MOVE_UP         reduce using rule 21 (expr -> IDENTIFIER .)
-    MOVE_DOWN       reduce using rule 21 (expr -> IDENTIFIER .)
-    MOVE_LEFT       reduce using rule 21 (expr -> IDENTIFIER .)
-    MOVE_RIGHT      reduce using rule 21 (expr -> IDENTIFIER .)
-    JUMP            reduce using rule 21 (expr -> IDENTIFIER .)
-    ATTACK          reduce using rule 21 (expr -> IDENTIFIER .)
-    DEFEND          reduce using rule 21 (expr -> IDENTIFIER .)
-    $end            reduce using rule 21 (expr -> IDENTIFIER .)
-    RBRACE          reduce using rule 21 (expr -> IDENTIFIER .)
-    RPAREN          reduce using rule 21 (expr -> IDENTIFIER .)
-    SEMICOLON       reduce using rule 21 (expr -> IDENTIFIER .)
+    $end            reduce using rule 9 (move_cmd -> MOVE_LEFT .)
+    RBRACE          reduce using rule 9 (move_cmd -> MOVE_LEFT .)
 
 
 state 14
 
-    (22) expr -> NUMBER .
+    (10) move_cmd -> MOVE_RIGHT .
 
-    PLUS            reduce using rule 22 (expr -> NUMBER .)
-    MINUS           reduce using rule 22 (expr -> NUMBER .)
-    TIMES           reduce using rule 22 (expr -> NUMBER .)
-    DIVIDE          reduce using rule 22 (expr -> NUMBER .)
-    ARROW           reduce using rule 22 (expr -> NUMBER .)
-    AND             reduce using rule 22 (expr -> NUMBER .)
-    OR              reduce using rule 22 (expr -> NUMBER .)
-    IF              reduce using rule 22 (expr -> NUMBER .)
-    WHILE           reduce using rule 22 (expr -> NUMBER .)
-    FOR             reduce using rule 22 (expr -> NUMBER .)
-    IDENTIFIER      reduce using rule 22 (expr -> NUMBER .)
-    NUMBER          reduce using rule 22 (expr -> NUMBER .)
-    NOT             reduce using rule 22 (expr -> NUMBER .)
-    MOVE_UP         reduce using rule 22 (expr -> NUMBER .)
-    MOVE_DOWN       reduce using rule 22 (expr -> NUMBER .)
-    MOVE_LEFT       reduce using rule 22 (expr -> NUMBER .)
-    MOVE_RIGHT      reduce using rule 22 (expr -> NUMBER .)
-    JUMP            reduce using rule 22 (expr -> NUMBER .)
-    ATTACK          reduce using rule 22 (expr -> NUMBER .)
-    DEFEND          reduce using rule 22 (expr -> NUMBER .)
-    $end            reduce using rule 22 (expr -> NUMBER .)
-    RBRACE          reduce using rule 22 (expr -> NUMBER .)
-    RPAREN          reduce using rule 22 (expr -> NUMBER .)
-    SEMICOLON       reduce using rule 22 (expr -> NUMBER .)
+    $end            reduce using rule 10 (move_cmd -> MOVE_RIGHT .)
+    RBRACE          reduce using rule 10 (move_cmd -> MOVE_RIGHT .)
 
 
 state 15
 
-    (30) expr -> NOT . expr
-    (21) expr -> . IDENTIFIER
-    (22) expr -> . NUMBER
-    (23) expr -> . expr PLUS expr
-    (24) expr -> . expr MINUS expr
-    (25) expr -> . expr TIMES expr
-    (26) expr -> . expr DIVIDE expr
-    (27) expr -> . expr ARROW expr
-    (28) expr -> . expr AND expr
-    (29) expr -> . expr OR expr
-    (30) expr -> . NOT expr
+    (11) action_cmd -> JUMP .
 
-    IDENTIFIER      shift and go to state 13
-    NUMBER          shift and go to state 14
-    NOT             shift and go to state 15
+    $end            reduce using rule 11 (action_cmd -> JUMP .)
+    RBRACE          reduce using rule 11 (action_cmd -> JUMP .)
 
-    expr                           shift and go to state 38
 
 state 16
 
-    (10) move_cmd -> MOVE_UP .
+    (12) action_cmd -> ATTACK .
 
-    IF              reduce using rule 10 (move_cmd -> MOVE_UP .)
-    WHILE           reduce using rule 10 (move_cmd -> MOVE_UP .)
-    FOR             reduce using rule 10 (move_cmd -> MOVE_UP .)
-    IDENTIFIER      reduce using rule 10 (move_cmd -> MOVE_UP .)
-    NUMBER          reduce using rule 10 (move_cmd -> MOVE_UP .)
-    NOT             reduce using rule 10 (move_cmd -> MOVE_UP .)
-    MOVE_UP         reduce using rule 10 (move_cmd -> MOVE_UP .)
-    MOVE_DOWN       reduce using rule 10 (move_cmd -> MOVE_UP .)
-    MOVE_LEFT       reduce using rule 10 (move_cmd -> MOVE_UP .)
-    MOVE_RIGHT      reduce using rule 10 (move_cmd -> MOVE_UP .)
-    JUMP            reduce using rule 10 (move_cmd -> MOVE_UP .)
-    ATTACK          reduce using rule 10 (move_cmd -> MOVE_UP .)
-    DEFEND          reduce using rule 10 (move_cmd -> MOVE_UP .)
-    $end            reduce using rule 10 (move_cmd -> MOVE_UP .)
-    RBRACE          reduce using rule 10 (move_cmd -> MOVE_UP .)
+    $end            reduce using rule 12 (action_cmd -> ATTACK .)
+    RBRACE          reduce using rule 12 (action_cmd -> ATTACK .)
 
 
 state 17
 
-    (11) move_cmd -> MOVE_DOWN .
+    (13) action_cmd -> DEFEND .
 
-    IF              reduce using rule 11 (move_cmd -> MOVE_DOWN .)
-    WHILE           reduce using rule 11 (move_cmd -> MOVE_DOWN .)
-    FOR             reduce using rule 11 (move_cmd -> MOVE_DOWN .)
-    IDENTIFIER      reduce using rule 11 (move_cmd -> MOVE_DOWN .)
-    NUMBER          reduce using rule 11 (move_cmd -> MOVE_DOWN .)
-    NOT             reduce using rule 11 (move_cmd -> MOVE_DOWN .)
-    MOVE_UP         reduce using rule 11 (move_cmd -> MOVE_DOWN .)
-    MOVE_DOWN       reduce using rule 11 (move_cmd -> MOVE_DOWN .)
-    MOVE_LEFT       reduce using rule 11 (move_cmd -> MOVE_DOWN .)
-    MOVE_RIGHT      reduce using rule 11 (move_cmd -> MOVE_DOWN .)
-    JUMP            reduce using rule 11 (move_cmd -> MOVE_DOWN .)
-    ATTACK          reduce using rule 11 (move_cmd -> MOVE_DOWN .)
-    DEFEND          reduce using rule 11 (move_cmd -> MOVE_DOWN .)
-    $end            reduce using rule 11 (move_cmd -> MOVE_DOWN .)
-    RBRACE          reduce using rule 11 (move_cmd -> MOVE_DOWN .)
+    $end            reduce using rule 13 (action_cmd -> DEFEND .)
+    RBRACE          reduce using rule 13 (action_cmd -> DEFEND .)
 
 
 state 18
 
-    (12) move_cmd -> MOVE_LEFT .
+    (14) if_stmt -> IF LPAREN . expr RPAREN LBRACE S RBRACE ELSE LBRACE S RBRACE
+    (17) expr -> . IDENTIFIER
+    (18) expr -> . NUMBER
+    (19) expr -> . expr PLUS expr
+    (20) expr -> . expr MINUS expr
 
-    IF              reduce using rule 12 (move_cmd -> MOVE_LEFT .)
-    WHILE           reduce using rule 12 (move_cmd -> MOVE_LEFT .)
-    FOR             reduce using rule 12 (move_cmd -> MOVE_LEFT .)
-    IDENTIFIER      reduce using rule 12 (move_cmd -> MOVE_LEFT .)
-    NUMBER          reduce using rule 12 (move_cmd -> MOVE_LEFT .)
-    NOT             reduce using rule 12 (move_cmd -> MOVE_LEFT .)
-    MOVE_UP         reduce using rule 12 (move_cmd -> MOVE_LEFT .)
-    MOVE_DOWN       reduce using rule 12 (move_cmd -> MOVE_LEFT .)
-    MOVE_LEFT       reduce using rule 12 (move_cmd -> MOVE_LEFT .)
-    MOVE_RIGHT      reduce using rule 12 (move_cmd -> MOVE_LEFT .)
-    JUMP            reduce using rule 12 (move_cmd -> MOVE_LEFT .)
-    ATTACK          reduce using rule 12 (move_cmd -> MOVE_LEFT .)
-    DEFEND          reduce using rule 12 (move_cmd -> MOVE_LEFT .)
-    $end            reduce using rule 12 (move_cmd -> MOVE_LEFT .)
-    RBRACE          reduce using rule 12 (move_cmd -> MOVE_LEFT .)
+    IDENTIFIER      shift and go to state 22
+    NUMBER          shift and go to state 23
 
+    expr                           shift and go to state 21
 
 state 19
 
-    (13) move_cmd -> MOVE_RIGHT .
+    (15) while_stmt -> WHILE LPAREN . expr RPAREN LBRACE S RBRACE
+    (17) expr -> . IDENTIFIER
+    (18) expr -> . NUMBER
+    (19) expr -> . expr PLUS expr
+    (20) expr -> . expr MINUS expr
 
-    IF              reduce using rule 13 (move_cmd -> MOVE_RIGHT .)
-    WHILE           reduce using rule 13 (move_cmd -> MOVE_RIGHT .)
-    FOR             reduce using rule 13 (move_cmd -> MOVE_RIGHT .)
-    IDENTIFIER      reduce using rule 13 (move_cmd -> MOVE_RIGHT .)
-    NUMBER          reduce using rule 13 (move_cmd -> MOVE_RIGHT .)
-    NOT             reduce using rule 13 (move_cmd -> MOVE_RIGHT .)
-    MOVE_UP         reduce using rule 13 (move_cmd -> MOVE_RIGHT .)
-    MOVE_DOWN       reduce using rule 13 (move_cmd -> MOVE_RIGHT .)
-    MOVE_LEFT       reduce using rule 13 (move_cmd -> MOVE_RIGHT .)
-    MOVE_RIGHT      reduce using rule 13 (move_cmd -> MOVE_RIGHT .)
-    JUMP            reduce using rule 13 (move_cmd -> MOVE_RIGHT .)
-    ATTACK          reduce using rule 13 (move_cmd -> MOVE_RIGHT .)
-    DEFEND          reduce using rule 13 (move_cmd -> MOVE_RIGHT .)
-    $end            reduce using rule 13 (move_cmd -> MOVE_RIGHT .)
-    RBRACE          reduce using rule 13 (move_cmd -> MOVE_RIGHT .)
+    IDENTIFIER      shift and go to state 22
+    NUMBER          shift and go to state 23
 
+    expr                           shift and go to state 24
 
 state 20
 
-    (14) action_cmd -> JUMP .
+    (16) for_stmt -> FOR LPAREN . expr SEMICOLON expr SEMICOLON expr RPAREN LBRACE S RBRACE
+    (17) expr -> . IDENTIFIER
+    (18) expr -> . NUMBER
+    (19) expr -> . expr PLUS expr
+    (20) expr -> . expr MINUS expr
 
-    IF              reduce using rule 14 (action_cmd -> JUMP .)
-    WHILE           reduce using rule 14 (action_cmd -> JUMP .)
-    FOR             reduce using rule 14 (action_cmd -> JUMP .)
-    IDENTIFIER      reduce using rule 14 (action_cmd -> JUMP .)
-    NUMBER          reduce using rule 14 (action_cmd -> JUMP .)
-    NOT             reduce using rule 14 (action_cmd -> JUMP .)
-    MOVE_UP         reduce using rule 14 (action_cmd -> JUMP .)
-    MOVE_DOWN       reduce using rule 14 (action_cmd -> JUMP .)
-    MOVE_LEFT       reduce using rule 14 (action_cmd -> JUMP .)
-    MOVE_RIGHT      reduce using rule 14 (action_cmd -> JUMP .)
-    JUMP            reduce using rule 14 (action_cmd -> JUMP .)
-    ATTACK          reduce using rule 14 (action_cmd -> JUMP .)
-    DEFEND          reduce using rule 14 (action_cmd -> JUMP .)
-    $end            reduce using rule 14 (action_cmd -> JUMP .)
-    RBRACE          reduce using rule 14 (action_cmd -> JUMP .)
+    IDENTIFIER      shift and go to state 22
+    NUMBER          shift and go to state 23
 
+    expr                           shift and go to state 25
 
 state 21
 
-    (15) action_cmd -> ATTACK .
+    (14) if_stmt -> IF LPAREN expr . RPAREN LBRACE S RBRACE ELSE LBRACE S RBRACE
+    (19) expr -> expr . PLUS expr
+    (20) expr -> expr . MINUS expr
 
-    IF              reduce using rule 15 (action_cmd -> ATTACK .)
-    WHILE           reduce using rule 15 (action_cmd -> ATTACK .)
-    FOR             reduce using rule 15 (action_cmd -> ATTACK .)
-    IDENTIFIER      reduce using rule 15 (action_cmd -> ATTACK .)
-    NUMBER          reduce using rule 15 (action_cmd -> ATTACK .)
-    NOT             reduce using rule 15 (action_cmd -> ATTACK .)
-    MOVE_UP         reduce using rule 15 (action_cmd -> ATTACK .)
-    MOVE_DOWN       reduce using rule 15 (action_cmd -> ATTACK .)
-    MOVE_LEFT       reduce using rule 15 (action_cmd -> ATTACK .)
-    MOVE_RIGHT      reduce using rule 15 (action_cmd -> ATTACK .)
-    JUMP            reduce using rule 15 (action_cmd -> ATTACK .)
-    ATTACK          reduce using rule 15 (action_cmd -> ATTACK .)
-    DEFEND          reduce using rule 15 (action_cmd -> ATTACK .)
-    $end            reduce using rule 15 (action_cmd -> ATTACK .)
-    RBRACE          reduce using rule 15 (action_cmd -> ATTACK .)
+    RPAREN          shift and go to state 26
+    PLUS            shift and go to state 27
+    MINUS           shift and go to state 28
 
 
 state 22
 
-    (16) action_cmd -> DEFEND .
+    (17) expr -> IDENTIFIER .
 
-    IF              reduce using rule 16 (action_cmd -> DEFEND .)
-    WHILE           reduce using rule 16 (action_cmd -> DEFEND .)
-    FOR             reduce using rule 16 (action_cmd -> DEFEND .)
-    IDENTIFIER      reduce using rule 16 (action_cmd -> DEFEND .)
-    NUMBER          reduce using rule 16 (action_cmd -> DEFEND .)
-    NOT             reduce using rule 16 (action_cmd -> DEFEND .)
-    MOVE_UP         reduce using rule 16 (action_cmd -> DEFEND .)
-    MOVE_DOWN       reduce using rule 16 (action_cmd -> DEFEND .)
-    MOVE_LEFT       reduce using rule 16 (action_cmd -> DEFEND .)
-    MOVE_RIGHT      reduce using rule 16 (action_cmd -> DEFEND .)
-    JUMP            reduce using rule 16 (action_cmd -> DEFEND .)
-    ATTACK          reduce using rule 16 (action_cmd -> DEFEND .)
-    DEFEND          reduce using rule 16 (action_cmd -> DEFEND .)
-    $end            reduce using rule 16 (action_cmd -> DEFEND .)
-    RBRACE          reduce using rule 16 (action_cmd -> DEFEND .)
+    RPAREN          reduce using rule 17 (expr -> IDENTIFIER .)
+    PLUS            reduce using rule 17 (expr -> IDENTIFIER .)
+    MINUS           reduce using rule 17 (expr -> IDENTIFIER .)
+    SEMICOLON       reduce using rule 17 (expr -> IDENTIFIER .)
 
 
 state 23
 
-    (1) S -> cmd S .
+    (18) expr -> NUMBER .
 
-    $end            reduce using rule 1 (S -> cmd S .)
-    RBRACE          reduce using rule 1 (S -> cmd S .)
+    RPAREN          reduce using rule 18 (expr -> NUMBER .)
+    PLUS            reduce using rule 18 (expr -> NUMBER .)
+    MINUS           reduce using rule 18 (expr -> NUMBER .)
+    SEMICOLON       reduce using rule 18 (expr -> NUMBER .)
 
 
 state 24
 
-    (2) S -> if_stmt S .
+    (15) while_stmt -> WHILE LPAREN expr . RPAREN LBRACE S RBRACE
+    (19) expr -> expr . PLUS expr
+    (20) expr -> expr . MINUS expr
 
-    $end            reduce using rule 2 (S -> if_stmt S .)
-    RBRACE          reduce using rule 2 (S -> if_stmt S .)
+    RPAREN          shift and go to state 29
+    PLUS            shift and go to state 27
+    MINUS           shift and go to state 28
 
 
 state 25
 
-    (3) S -> while_stmt S .
+    (16) for_stmt -> FOR LPAREN expr . SEMICOLON expr SEMICOLON expr RPAREN LBRACE S RBRACE
+    (19) expr -> expr . PLUS expr
+    (20) expr -> expr . MINUS expr
 
-    $end            reduce using rule 3 (S -> while_stmt S .)
-    RBRACE          reduce using rule 3 (S -> while_stmt S .)
+    SEMICOLON       shift and go to state 30
+    PLUS            shift and go to state 27
+    MINUS           shift and go to state 28
 
 
 state 26
 
-    (4) S -> for_stmt S .
+    (14) if_stmt -> IF LPAREN expr RPAREN . LBRACE S RBRACE ELSE LBRACE S RBRACE
 
-    $end            reduce using rule 4 (S -> for_stmt S .)
-    RBRACE          reduce using rule 4 (S -> for_stmt S .)
+    LBRACE          shift and go to state 31
 
 
 state 27
 
-    (5) S -> expr S .
+    (19) expr -> expr PLUS . expr
+    (17) expr -> . IDENTIFIER
+    (18) expr -> . NUMBER
+    (19) expr -> . expr PLUS expr
+    (20) expr -> . expr MINUS expr
 
-    $end            reduce using rule 5 (S -> expr S .)
-    RBRACE          reduce using rule 5 (S -> expr S .)
+    IDENTIFIER      shift and go to state 22
+    NUMBER          shift and go to state 23
 
+    expr                           shift and go to state 32
 
 state 28
 
-    (23) expr -> expr PLUS . expr
-    (21) expr -> . IDENTIFIER
-    (22) expr -> . NUMBER
-    (23) expr -> . expr PLUS expr
-    (24) expr -> . expr MINUS expr
-    (25) expr -> . expr TIMES expr
-    (26) expr -> . expr DIVIDE expr
-    (27) expr -> . expr ARROW expr
-    (28) expr -> . expr AND expr
-    (29) expr -> . expr OR expr
-    (30) expr -> . NOT expr
+    (20) expr -> expr MINUS . expr
+    (17) expr -> . IDENTIFIER
+    (18) expr -> . NUMBER
+    (19) expr -> . expr PLUS expr
+    (20) expr -> . expr MINUS expr
 
-    IDENTIFIER      shift and go to state 13
-    NUMBER          shift and go to state 14
-    NOT             shift and go to state 15
+    IDENTIFIER      shift and go to state 22
+    NUMBER          shift and go to state 23
 
-    expr                           shift and go to state 39
+    expr                           shift and go to state 33
 
 state 29
 
-    (24) expr -> expr MINUS . expr
-    (21) expr -> . IDENTIFIER
-    (22) expr -> . NUMBER
-    (23) expr -> . expr PLUS expr
-    (24) expr -> . expr MINUS expr
-    (25) expr -> . expr TIMES expr
-    (26) expr -> . expr DIVIDE expr
-    (27) expr -> . expr ARROW expr
-    (28) expr -> . expr AND expr
-    (29) expr -> . expr OR expr
-    (30) expr -> . NOT expr
+    (15) while_stmt -> WHILE LPAREN expr RPAREN . LBRACE S RBRACE
 
-    IDENTIFIER      shift and go to state 13
-    NUMBER          shift and go to state 14
-    NOT             shift and go to state 15
+    LBRACE          shift and go to state 34
 
-    expr                           shift and go to state 40
 
 state 30
 
-    (25) expr -> expr TIMES . expr
-    (21) expr -> . IDENTIFIER
-    (22) expr -> . NUMBER
-    (23) expr -> . expr PLUS expr
-    (24) expr -> . expr MINUS expr
-    (25) expr -> . expr TIMES expr
-    (26) expr -> . expr DIVIDE expr
-    (27) expr -> . expr ARROW expr
-    (28) expr -> . expr AND expr
-    (29) expr -> . expr OR expr
-    (30) expr -> . NOT expr
+    (16) for_stmt -> FOR LPAREN expr SEMICOLON . expr SEMICOLON expr RPAREN LBRACE S RBRACE
+    (17) expr -> . IDENTIFIER
+    (18) expr -> . NUMBER
+    (19) expr -> . expr PLUS expr
+    (20) expr -> . expr MINUS expr
 
-    IDENTIFIER      shift and go to state 13
-    NUMBER          shift and go to state 14
-    NOT             shift and go to state 15
+    IDENTIFIER      shift and go to state 22
+    NUMBER          shift and go to state 23
 
-    expr                           shift and go to state 41
+    expr                           shift and go to state 35
 
 state 31
 
-    (26) expr -> expr DIVIDE . expr
-    (21) expr -> . IDENTIFIER
-    (22) expr -> . NUMBER
-    (23) expr -> . expr PLUS expr
-    (24) expr -> . expr MINUS expr
-    (25) expr -> . expr TIMES expr
-    (26) expr -> . expr DIVIDE expr
-    (27) expr -> . expr ARROW expr
-    (28) expr -> . expr AND expr
-    (29) expr -> . expr OR expr
-    (30) expr -> . NOT expr
+    (14) if_stmt -> IF LPAREN expr RPAREN LBRACE . S RBRACE ELSE LBRACE S RBRACE
+    (1) S -> . cmd
+    (2) S -> . if_stmt
+    (3) S -> . while_stmt
+    (4) S -> . for_stmt
+    (5) cmd -> . move_cmd
+    (6) cmd -> . action_cmd
+    (14) if_stmt -> . IF LPAREN expr RPAREN LBRACE S RBRACE ELSE LBRACE S RBRACE
+    (15) while_stmt -> . WHILE LPAREN expr RPAREN LBRACE S RBRACE
+    (16) for_stmt -> . FOR LPAREN expr SEMICOLON expr SEMICOLON expr RPAREN LBRACE S RBRACE
+    (7) move_cmd -> . MOVE_UP
+    (8) move_cmd -> . MOVE_DOWN
+    (9) move_cmd -> . MOVE_LEFT
+    (10) move_cmd -> . MOVE_RIGHT
+    (11) action_cmd -> . JUMP
+    (12) action_cmd -> . ATTACK
+    (13) action_cmd -> . DEFEND
 
-    IDENTIFIER      shift and go to state 13
-    NUMBER          shift and go to state 14
-    NOT             shift and go to state 15
+    IF              shift and go to state 8
+    WHILE           shift and go to state 9
+    FOR             shift and go to state 10
+    MOVE_UP         shift and go to state 11
+    MOVE_DOWN       shift and go to state 12
+    MOVE_LEFT       shift and go to state 13
+    MOVE_RIGHT      shift and go to state 14
+    JUMP            shift and go to state 15
+    ATTACK          shift and go to state 16
+    DEFEND          shift and go to state 17
 
-    expr                           shift and go to state 42
+    S                              shift and go to state 36
+    cmd                            shift and go to state 2
+    if_stmt                        shift and go to state 3
+    while_stmt                     shift and go to state 4
+    for_stmt                       shift and go to state 5
+    move_cmd                       shift and go to state 6
+    action_cmd                     shift and go to state 7
 
 state 32
 
-    (27) expr -> expr ARROW . expr
-    (21) expr -> . IDENTIFIER
-    (22) expr -> . NUMBER
-    (23) expr -> . expr PLUS expr
-    (24) expr -> . expr MINUS expr
-    (25) expr -> . expr TIMES expr
-    (26) expr -> . expr DIVIDE expr
-    (27) expr -> . expr ARROW expr
-    (28) expr -> . expr AND expr
-    (29) expr -> . expr OR expr
-    (30) expr -> . NOT expr
+    (19) expr -> expr PLUS expr .
+    (19) expr -> expr . PLUS expr
+    (20) expr -> expr . MINUS expr
 
-    IDENTIFIER      shift and go to state 13
-    NUMBER          shift and go to state 14
-    NOT             shift and go to state 15
+    RPAREN          reduce using rule 19 (expr -> expr PLUS expr .)
+    PLUS            reduce using rule 19 (expr -> expr PLUS expr .)
+    MINUS           reduce using rule 19 (expr -> expr PLUS expr .)
+    SEMICOLON       reduce using rule 19 (expr -> expr PLUS expr .)
 
-    expr                           shift and go to state 43
+  ! PLUS            [ shift and go to state 27 ]
+  ! MINUS           [ shift and go to state 28 ]
+
 
 state 33
 
-    (28) expr -> expr AND . expr
-    (21) expr -> . IDENTIFIER
-    (22) expr -> . NUMBER
-    (23) expr -> . expr PLUS expr
-    (24) expr -> . expr MINUS expr
-    (25) expr -> . expr TIMES expr
-    (26) expr -> . expr DIVIDE expr
-    (27) expr -> . expr ARROW expr
-    (28) expr -> . expr AND expr
-    (29) expr -> . expr OR expr
-    (30) expr -> . NOT expr
+    (20) expr -> expr MINUS expr .
+    (19) expr -> expr . PLUS expr
+    (20) expr -> expr . MINUS expr
 
-    IDENTIFIER      shift and go to state 13
-    NUMBER          shift and go to state 14
-    NOT             shift and go to state 15
+    RPAREN          reduce using rule 20 (expr -> expr MINUS expr .)
+    PLUS            reduce using rule 20 (expr -> expr MINUS expr .)
+    MINUS           reduce using rule 20 (expr -> expr MINUS expr .)
+    SEMICOLON       reduce using rule 20 (expr -> expr MINUS expr .)
 
-    expr                           shift and go to state 44
+  ! PLUS            [ shift and go to state 27 ]
+  ! MINUS           [ shift and go to state 28 ]
+
 
 state 34
 
-    (29) expr -> expr OR . expr
-    (21) expr -> . IDENTIFIER
-    (22) expr -> . NUMBER
-    (23) expr -> . expr PLUS expr
-    (24) expr -> . expr MINUS expr
-    (25) expr -> . expr TIMES expr
-    (26) expr -> . expr DIVIDE expr
-    (27) expr -> . expr ARROW expr
-    (28) expr -> . expr AND expr
-    (29) expr -> . expr OR expr
-    (30) expr -> . NOT expr
+    (15) while_stmt -> WHILE LPAREN expr RPAREN LBRACE . S RBRACE
+    (1) S -> . cmd
+    (2) S -> . if_stmt
+    (3) S -> . while_stmt
+    (4) S -> . for_stmt
+    (5) cmd -> . move_cmd
+    (6) cmd -> . action_cmd
+    (14) if_stmt -> . IF LPAREN expr RPAREN LBRACE S RBRACE ELSE LBRACE S RBRACE
+    (15) while_stmt -> . WHILE LPAREN expr RPAREN LBRACE S RBRACE
+    (16) for_stmt -> . FOR LPAREN expr SEMICOLON expr SEMICOLON expr RPAREN LBRACE S RBRACE
+    (7) move_cmd -> . MOVE_UP
+    (8) move_cmd -> . MOVE_DOWN
+    (9) move_cmd -> . MOVE_LEFT
+    (10) move_cmd -> . MOVE_RIGHT
+    (11) action_cmd -> . JUMP
+    (12) action_cmd -> . ATTACK
+    (13) action_cmd -> . DEFEND
 
-    IDENTIFIER      shift and go to state 13
-    NUMBER          shift and go to state 14
-    NOT             shift and go to state 15
+    IF              shift and go to state 8
+    WHILE           shift and go to state 9
+    FOR             shift and go to state 10
+    MOVE_UP         shift and go to state 11
+    MOVE_DOWN       shift and go to state 12
+    MOVE_LEFT       shift and go to state 13
+    MOVE_RIGHT      shift and go to state 14
+    JUMP            shift and go to state 15
+    ATTACK          shift and go to state 16
+    DEFEND          shift and go to state 17
 
-    expr                           shift and go to state 45
+    S                              shift and go to state 37
+    cmd                            shift and go to state 2
+    if_stmt                        shift and go to state 3
+    while_stmt                     shift and go to state 4
+    for_stmt                       shift and go to state 5
+    move_cmd                       shift and go to state 6
+    action_cmd                     shift and go to state 7
 
 state 35
 
-    (17) if_stmt -> IF LPAREN . expr RPAREN LBRACE S RBRACE
-    (18) if_stmt -> IF LPAREN . expr RPAREN LBRACE S RBRACE ELSE LBRACE S RBRACE
-    (21) expr -> . IDENTIFIER
-    (22) expr -> . NUMBER
-    (23) expr -> . expr PLUS expr
-    (24) expr -> . expr MINUS expr
-    (25) expr -> . expr TIMES expr
-    (26) expr -> . expr DIVIDE expr
-    (27) expr -> . expr ARROW expr
-    (28) expr -> . expr AND expr
-    (29) expr -> . expr OR expr
-    (30) expr -> . NOT expr
+    (16) for_stmt -> FOR LPAREN expr SEMICOLON expr . SEMICOLON expr RPAREN LBRACE S RBRACE
+    (19) expr -> expr . PLUS expr
+    (20) expr -> expr . MINUS expr
 
-    IDENTIFIER      shift and go to state 13
-    NUMBER          shift and go to state 14
-    NOT             shift and go to state 15
+    SEMICOLON       shift and go to state 38
+    PLUS            shift and go to state 27
+    MINUS           shift and go to state 28
 
-    expr                           shift and go to state 46
 
 state 36
 
-    (19) while_stmt -> WHILE LPAREN . expr RPAREN LBRACE S RBRACE
-    (21) expr -> . IDENTIFIER
-    (22) expr -> . NUMBER
-    (23) expr -> . expr PLUS expr
-    (24) expr -> . expr MINUS expr
-    (25) expr -> . expr TIMES expr
-    (26) expr -> . expr DIVIDE expr
-    (27) expr -> . expr ARROW expr
-    (28) expr -> . expr AND expr
-    (29) expr -> . expr OR expr
-    (30) expr -> . NOT expr
+    (14) if_stmt -> IF LPAREN expr RPAREN LBRACE S . RBRACE ELSE LBRACE S RBRACE
 
-    IDENTIFIER      shift and go to state 13
-    NUMBER          shift and go to state 14
-    NOT             shift and go to state 15
+    RBRACE          shift and go to state 39
 
-    expr                           shift and go to state 47
 
 state 37
 
-    (20) for_stmt -> FOR LPAREN . expr SEMICOLON expr SEMICOLON expr RPAREN LBRACE S RBRACE
-    (21) expr -> . IDENTIFIER
-    (22) expr -> . NUMBER
-    (23) expr -> . expr PLUS expr
-    (24) expr -> . expr MINUS expr
-    (25) expr -> . expr TIMES expr
-    (26) expr -> . expr DIVIDE expr
-    (27) expr -> . expr ARROW expr
-    (28) expr -> . expr AND expr
-    (29) expr -> . expr OR expr
-    (30) expr -> . NOT expr
+    (15) while_stmt -> WHILE LPAREN expr RPAREN LBRACE S . RBRACE
 
-    IDENTIFIER      shift and go to state 13
-    NUMBER          shift and go to state 14
-    NOT             shift and go to state 15
+    RBRACE          shift and go to state 40
 
-    expr                           shift and go to state 48
 
 state 38
 
-    (30) expr -> NOT expr .
-    (23) expr -> expr . PLUS expr
-    (24) expr -> expr . MINUS expr
-    (25) expr -> expr . TIMES expr
-    (26) expr -> expr . DIVIDE expr
-    (27) expr -> expr . ARROW expr
-    (28) expr -> expr . AND expr
-    (29) expr -> expr . OR expr
+    (16) for_stmt -> FOR LPAREN expr SEMICOLON expr SEMICOLON . expr RPAREN LBRACE S RBRACE
+    (17) expr -> . IDENTIFIER
+    (18) expr -> . NUMBER
+    (19) expr -> . expr PLUS expr
+    (20) expr -> . expr MINUS expr
 
-    AND             reduce using rule 30 (expr -> NOT expr .)
-    OR              reduce using rule 30 (expr -> NOT expr .)
-    IF              reduce using rule 30 (expr -> NOT expr .)
-    WHILE           reduce using rule 30 (expr -> NOT expr .)
-    FOR             reduce using rule 30 (expr -> NOT expr .)
-    IDENTIFIER      reduce using rule 30 (expr -> NOT expr .)
-    NUMBER          reduce using rule 30 (expr -> NOT expr .)
-    NOT             reduce using rule 30 (expr -> NOT expr .)
-    MOVE_UP         reduce using rule 30 (expr -> NOT expr .)
-    MOVE_DOWN       reduce using rule 30 (expr -> NOT expr .)
-    MOVE_LEFT       reduce using rule 30 (expr -> NOT expr .)
-    MOVE_RIGHT      reduce using rule 30 (expr -> NOT expr .)
-    JUMP            reduce using rule 30 (expr -> NOT expr .)
-    ATTACK          reduce using rule 30 (expr -> NOT expr .)
-    DEFEND          reduce using rule 30 (expr -> NOT expr .)
-    $end            reduce using rule 30 (expr -> NOT expr .)
-    RBRACE          reduce using rule 30 (expr -> NOT expr .)
-    RPAREN          reduce using rule 30 (expr -> NOT expr .)
-    SEMICOLON       reduce using rule 30 (expr -> NOT expr .)
-    PLUS            shift and go to state 28
-    MINUS           shift and go to state 29
-    TIMES           shift and go to state 30
-    DIVIDE          shift and go to state 31
-    ARROW           shift and go to state 32
+    IDENTIFIER      shift and go to state 22
+    NUMBER          shift and go to state 23
 
-  ! PLUS            [ reduce using rule 30 (expr -> NOT expr .) ]
-  ! MINUS           [ reduce using rule 30 (expr -> NOT expr .) ]
-  ! TIMES           [ reduce using rule 30 (expr -> NOT expr .) ]
-  ! DIVIDE          [ reduce using rule 30 (expr -> NOT expr .) ]
-  ! ARROW           [ reduce using rule 30 (expr -> NOT expr .) ]
-  ! AND             [ shift and go to state 33 ]
-  ! OR              [ shift and go to state 34 ]
-
+    expr                           shift and go to state 41
 
 state 39
 
-    (23) expr -> expr PLUS expr .
-    (23) expr -> expr . PLUS expr
-    (24) expr -> expr . MINUS expr
-    (25) expr -> expr . TIMES expr
-    (26) expr -> expr . DIVIDE expr
-    (27) expr -> expr . ARROW expr
-    (28) expr -> expr . AND expr
-    (29) expr -> expr . OR expr
+    (14) if_stmt -> IF LPAREN expr RPAREN LBRACE S RBRACE . ELSE LBRACE S RBRACE
 
-    PLUS            reduce using rule 23 (expr -> expr PLUS expr .)
-    MINUS           reduce using rule 23 (expr -> expr PLUS expr .)
-    AND             reduce using rule 23 (expr -> expr PLUS expr .)
-    OR              reduce using rule 23 (expr -> expr PLUS expr .)
-    IF              reduce using rule 23 (expr -> expr PLUS expr .)
-    WHILE           reduce using rule 23 (expr -> expr PLUS expr .)
-    FOR             reduce using rule 23 (expr -> expr PLUS expr .)
-    IDENTIFIER      reduce using rule 23 (expr -> expr PLUS expr .)
-    NUMBER          reduce using rule 23 (expr -> expr PLUS expr .)
-    NOT             reduce using rule 23 (expr -> expr PLUS expr .)
-    MOVE_UP         reduce using rule 23 (expr -> expr PLUS expr .)
-    MOVE_DOWN       reduce using rule 23 (expr -> expr PLUS expr .)
-    MOVE_LEFT       reduce using rule 23 (expr -> expr PLUS expr .)
-    MOVE_RIGHT      reduce using rule 23 (expr -> expr PLUS expr .)
-    JUMP            reduce using rule 23 (expr -> expr PLUS expr .)
-    ATTACK          reduce using rule 23 (expr -> expr PLUS expr .)
-    DEFEND          reduce using rule 23 (expr -> expr PLUS expr .)
-    $end            reduce using rule 23 (expr -> expr PLUS expr .)
-    RBRACE          reduce using rule 23 (expr -> expr PLUS expr .)
-    RPAREN          reduce using rule 23 (expr -> expr PLUS expr .)
-    SEMICOLON       reduce using rule 23 (expr -> expr PLUS expr .)
-    TIMES           shift and go to state 30
-    DIVIDE          shift and go to state 31
-    ARROW           shift and go to state 32
-
-  ! TIMES           [ reduce using rule 23 (expr -> expr PLUS expr .) ]
-  ! DIVIDE          [ reduce using rule 23 (expr -> expr PLUS expr .) ]
-  ! ARROW           [ reduce using rule 23 (expr -> expr PLUS expr .) ]
-  ! PLUS            [ shift and go to state 28 ]
-  ! MINUS           [ shift and go to state 29 ]
-  ! AND             [ shift and go to state 33 ]
-  ! OR              [ shift and go to state 34 ]
+    ELSE            shift and go to state 42
 
 
 state 40
 
-    (24) expr -> expr MINUS expr .
-    (23) expr -> expr . PLUS expr
-    (24) expr -> expr . MINUS expr
-    (25) expr -> expr . TIMES expr
-    (26) expr -> expr . DIVIDE expr
-    (27) expr -> expr . ARROW expr
-    (28) expr -> expr . AND expr
-    (29) expr -> expr . OR expr
+    (15) while_stmt -> WHILE LPAREN expr RPAREN LBRACE S RBRACE .
 
-    PLUS            reduce using rule 24 (expr -> expr MINUS expr .)
-    MINUS           reduce using rule 24 (expr -> expr MINUS expr .)
-    AND             reduce using rule 24 (expr -> expr MINUS expr .)
-    OR              reduce using rule 24 (expr -> expr MINUS expr .)
-    IF              reduce using rule 24 (expr -> expr MINUS expr .)
-    WHILE           reduce using rule 24 (expr -> expr MINUS expr .)
-    FOR             reduce using rule 24 (expr -> expr MINUS expr .)
-    IDENTIFIER      reduce using rule 24 (expr -> expr MINUS expr .)
-    NUMBER          reduce using rule 24 (expr -> expr MINUS expr .)
-    NOT             reduce using rule 24 (expr -> expr MINUS expr .)
-    MOVE_UP         reduce using rule 24 (expr -> expr MINUS expr .)
-    MOVE_DOWN       reduce using rule 24 (expr -> expr MINUS expr .)
-    MOVE_LEFT       reduce using rule 24 (expr -> expr MINUS expr .)
-    MOVE_RIGHT      reduce using rule 24 (expr -> expr MINUS expr .)
-    JUMP            reduce using rule 24 (expr -> expr MINUS expr .)
-    ATTACK          reduce using rule 24 (expr -> expr MINUS expr .)
-    DEFEND          reduce using rule 24 (expr -> expr MINUS expr .)
-    $end            reduce using rule 24 (expr -> expr MINUS expr .)
-    RBRACE          reduce using rule 24 (expr -> expr MINUS expr .)
-    RPAREN          reduce using rule 24 (expr -> expr MINUS expr .)
-    SEMICOLON       reduce using rule 24 (expr -> expr MINUS expr .)
-    TIMES           shift and go to state 30
-    DIVIDE          shift and go to state 31
-    ARROW           shift and go to state 32
-
-  ! TIMES           [ reduce using rule 24 (expr -> expr MINUS expr .) ]
-  ! DIVIDE          [ reduce using rule 24 (expr -> expr MINUS expr .) ]
-  ! ARROW           [ reduce using rule 24 (expr -> expr MINUS expr .) ]
-  ! PLUS            [ shift and go to state 28 ]
-  ! MINUS           [ shift and go to state 29 ]
-  ! AND             [ shift and go to state 33 ]
-  ! OR              [ shift and go to state 34 ]
+    $end            reduce using rule 15 (while_stmt -> WHILE LPAREN expr RPAREN LBRACE S RBRACE .)
+    RBRACE          reduce using rule 15 (while_stmt -> WHILE LPAREN expr RPAREN LBRACE S RBRACE .)
 
 
 state 41
 
-    (25) expr -> expr TIMES expr .
-    (23) expr -> expr . PLUS expr
-    (24) expr -> expr . MINUS expr
-    (25) expr -> expr . TIMES expr
-    (26) expr -> expr . DIVIDE expr
-    (27) expr -> expr . ARROW expr
-    (28) expr -> expr . AND expr
-    (29) expr -> expr . OR expr
+    (16) for_stmt -> FOR LPAREN expr SEMICOLON expr SEMICOLON expr . RPAREN LBRACE S RBRACE
+    (19) expr -> expr . PLUS expr
+    (20) expr -> expr . MINUS expr
 
-    PLUS            reduce using rule 25 (expr -> expr TIMES expr .)
-    MINUS           reduce using rule 25 (expr -> expr TIMES expr .)
-    TIMES           reduce using rule 25 (expr -> expr TIMES expr .)
-    DIVIDE          reduce using rule 25 (expr -> expr TIMES expr .)
-    AND             reduce using rule 25 (expr -> expr TIMES expr .)
-    OR              reduce using rule 25 (expr -> expr TIMES expr .)
-    IF              reduce using rule 25 (expr -> expr TIMES expr .)
-    WHILE           reduce using rule 25 (expr -> expr TIMES expr .)
-    FOR             reduce using rule 25 (expr -> expr TIMES expr .)
-    IDENTIFIER      reduce using rule 25 (expr -> expr TIMES expr .)
-    NUMBER          reduce using rule 25 (expr -> expr TIMES expr .)
-    NOT             reduce using rule 25 (expr -> expr TIMES expr .)
-    MOVE_UP         reduce using rule 25 (expr -> expr TIMES expr .)
-    MOVE_DOWN       reduce using rule 25 (expr -> expr TIMES expr .)
-    MOVE_LEFT       reduce using rule 25 (expr -> expr TIMES expr .)
-    MOVE_RIGHT      reduce using rule 25 (expr -> expr TIMES expr .)
-    JUMP            reduce using rule 25 (expr -> expr TIMES expr .)
-    ATTACK          reduce using rule 25 (expr -> expr TIMES expr .)
-    DEFEND          reduce using rule 25 (expr -> expr TIMES expr .)
-    $end            reduce using rule 25 (expr -> expr TIMES expr .)
-    RBRACE          reduce using rule 25 (expr -> expr TIMES expr .)
-    RPAREN          reduce using rule 25 (expr -> expr TIMES expr .)
-    SEMICOLON       reduce using rule 25 (expr -> expr TIMES expr .)
-    ARROW           shift and go to state 32
-
-  ! ARROW           [ reduce using rule 25 (expr -> expr TIMES expr .) ]
-  ! PLUS            [ shift and go to state 28 ]
-  ! MINUS           [ shift and go to state 29 ]
-  ! TIMES           [ shift and go to state 30 ]
-  ! DIVIDE          [ shift and go to state 31 ]
-  ! AND             [ shift and go to state 33 ]
-  ! OR              [ shift and go to state 34 ]
+    RPAREN          shift and go to state 43
+    PLUS            shift and go to state 27
+    MINUS           shift and go to state 28
 
 
 state 42
 
-    (26) expr -> expr DIVIDE expr .
-    (23) expr -> expr . PLUS expr
-    (24) expr -> expr . MINUS expr
-    (25) expr -> expr . TIMES expr
-    (26) expr -> expr . DIVIDE expr
-    (27) expr -> expr . ARROW expr
-    (28) expr -> expr . AND expr
-    (29) expr -> expr . OR expr
+    (14) if_stmt -> IF LPAREN expr RPAREN LBRACE S RBRACE ELSE . LBRACE S RBRACE
 
-    PLUS            reduce using rule 26 (expr -> expr DIVIDE expr .)
-    MINUS           reduce using rule 26 (expr -> expr DIVIDE expr .)
-    TIMES           reduce using rule 26 (expr -> expr DIVIDE expr .)
-    DIVIDE          reduce using rule 26 (expr -> expr DIVIDE expr .)
-    AND             reduce using rule 26 (expr -> expr DIVIDE expr .)
-    OR              reduce using rule 26 (expr -> expr DIVIDE expr .)
-    IF              reduce using rule 26 (expr -> expr DIVIDE expr .)
-    WHILE           reduce using rule 26 (expr -> expr DIVIDE expr .)
-    FOR             reduce using rule 26 (expr -> expr DIVIDE expr .)
-    IDENTIFIER      reduce using rule 26 (expr -> expr DIVIDE expr .)
-    NUMBER          reduce using rule 26 (expr -> expr DIVIDE expr .)
-    NOT             reduce using rule 26 (expr -> expr DIVIDE expr .)
-    MOVE_UP         reduce using rule 26 (expr -> expr DIVIDE expr .)
-    MOVE_DOWN       reduce using rule 26 (expr -> expr DIVIDE expr .)
-    MOVE_LEFT       reduce using rule 26 (expr -> expr DIVIDE expr .)
-    MOVE_RIGHT      reduce using rule 26 (expr -> expr DIVIDE expr .)
-    JUMP            reduce using rule 26 (expr -> expr DIVIDE expr .)
-    ATTACK          reduce using rule 26 (expr -> expr DIVIDE expr .)
-    DEFEND          reduce using rule 26 (expr -> expr DIVIDE expr .)
-    $end            reduce using rule 26 (expr -> expr DIVIDE expr .)
-    RBRACE          reduce using rule 26 (expr -> expr DIVIDE expr .)
-    RPAREN          reduce using rule 26 (expr -> expr DIVIDE expr .)
-    SEMICOLON       reduce using rule 26 (expr -> expr DIVIDE expr .)
-    ARROW           shift and go to state 32
-
-  ! ARROW           [ reduce using rule 26 (expr -> expr DIVIDE expr .) ]
-  ! PLUS            [ shift and go to state 28 ]
-  ! MINUS           [ shift and go to state 29 ]
-  ! TIMES           [ shift and go to state 30 ]
-  ! DIVIDE          [ shift and go to state 31 ]
-  ! AND             [ shift and go to state 33 ]
-  ! OR              [ shift and go to state 34 ]
+    LBRACE          shift and go to state 44
 
 
 state 43
 
-    (27) expr -> expr ARROW expr .
-    (23) expr -> expr . PLUS expr
-    (24) expr -> expr . MINUS expr
-    (25) expr -> expr . TIMES expr
-    (26) expr -> expr . DIVIDE expr
-    (27) expr -> expr . ARROW expr
-    (28) expr -> expr . AND expr
-    (29) expr -> expr . OR expr
+    (16) for_stmt -> FOR LPAREN expr SEMICOLON expr SEMICOLON expr RPAREN . LBRACE S RBRACE
 
-    PLUS            reduce using rule 27 (expr -> expr ARROW expr .)
-    MINUS           reduce using rule 27 (expr -> expr ARROW expr .)
-    TIMES           reduce using rule 27 (expr -> expr ARROW expr .)
-    DIVIDE          reduce using rule 27 (expr -> expr ARROW expr .)
-    ARROW           reduce using rule 27 (expr -> expr ARROW expr .)
-    AND             reduce using rule 27 (expr -> expr ARROW expr .)
-    OR              reduce using rule 27 (expr -> expr ARROW expr .)
-    IF              reduce using rule 27 (expr -> expr ARROW expr .)
-    WHILE           reduce using rule 27 (expr -> expr ARROW expr .)
-    FOR             reduce using rule 27 (expr -> expr ARROW expr .)
-    IDENTIFIER      reduce using rule 27 (expr -> expr ARROW expr .)
-    NUMBER          reduce using rule 27 (expr -> expr ARROW expr .)
-    NOT             reduce using rule 27 (expr -> expr ARROW expr .)
-    MOVE_UP         reduce using rule 27 (expr -> expr ARROW expr .)
-    MOVE_DOWN       reduce using rule 27 (expr -> expr ARROW expr .)
-    MOVE_LEFT       reduce using rule 27 (expr -> expr ARROW expr .)
-    MOVE_RIGHT      reduce using rule 27 (expr -> expr ARROW expr .)
-    JUMP            reduce using rule 27 (expr -> expr ARROW expr .)
-    ATTACK          reduce using rule 27 (expr -> expr ARROW expr .)
-    DEFEND          reduce using rule 27 (expr -> expr ARROW expr .)
-    $end            reduce using rule 27 (expr -> expr ARROW expr .)
-    RBRACE          reduce using rule 27 (expr -> expr ARROW expr .)
-    RPAREN          reduce using rule 27 (expr -> expr ARROW expr .)
-    SEMICOLON       reduce using rule 27 (expr -> expr ARROW expr .)
-
-  ! PLUS            [ shift and go to state 28 ]
-  ! MINUS           [ shift and go to state 29 ]
-  ! TIMES           [ shift and go to state 30 ]
-  ! DIVIDE          [ shift and go to state 31 ]
-  ! ARROW           [ shift and go to state 32 ]
-  ! AND             [ shift and go to state 33 ]
-  ! OR              [ shift and go to state 34 ]
+    LBRACE          shift and go to state 45
 
 
 state 44
 
-    (28) expr -> expr AND expr .
-    (23) expr -> expr . PLUS expr
-    (24) expr -> expr . MINUS expr
-    (25) expr -> expr . TIMES expr
-    (26) expr -> expr . DIVIDE expr
-    (27) expr -> expr . ARROW expr
-    (28) expr -> expr . AND expr
-    (29) expr -> expr . OR expr
+    (14) if_stmt -> IF LPAREN expr RPAREN LBRACE S RBRACE ELSE LBRACE . S RBRACE
+    (1) S -> . cmd
+    (2) S -> . if_stmt
+    (3) S -> . while_stmt
+    (4) S -> . for_stmt
+    (5) cmd -> . move_cmd
+    (6) cmd -> . action_cmd
+    (14) if_stmt -> . IF LPAREN expr RPAREN LBRACE S RBRACE ELSE LBRACE S RBRACE
+    (15) while_stmt -> . WHILE LPAREN expr RPAREN LBRACE S RBRACE
+    (16) for_stmt -> . FOR LPAREN expr SEMICOLON expr SEMICOLON expr RPAREN LBRACE S RBRACE
+    (7) move_cmd -> . MOVE_UP
+    (8) move_cmd -> . MOVE_DOWN
+    (9) move_cmd -> . MOVE_LEFT
+    (10) move_cmd -> . MOVE_RIGHT
+    (11) action_cmd -> . JUMP
+    (12) action_cmd -> . ATTACK
+    (13) action_cmd -> . DEFEND
 
-    AND             reduce using rule 28 (expr -> expr AND expr .)
-    OR              reduce using rule 28 (expr -> expr AND expr .)
-    IF              reduce using rule 28 (expr -> expr AND expr .)
-    WHILE           reduce using rule 28 (expr -> expr AND expr .)
-    FOR             reduce using rule 28 (expr -> expr AND expr .)
-    IDENTIFIER      reduce using rule 28 (expr -> expr AND expr .)
-    NUMBER          reduce using rule 28 (expr -> expr AND expr .)
-    NOT             reduce using rule 28 (expr -> expr AND expr .)
-    MOVE_UP         reduce using rule 28 (expr -> expr AND expr .)
-    MOVE_DOWN       reduce using rule 28 (expr -> expr AND expr .)
-    MOVE_LEFT       reduce using rule 28 (expr -> expr AND expr .)
-    MOVE_RIGHT      reduce using rule 28 (expr -> expr AND expr .)
-    JUMP            reduce using rule 28 (expr -> expr AND expr .)
-    ATTACK          reduce using rule 28 (expr -> expr AND expr .)
-    DEFEND          reduce using rule 28 (expr -> expr AND expr .)
-    $end            reduce using rule 28 (expr -> expr AND expr .)
-    RBRACE          reduce using rule 28 (expr -> expr AND expr .)
-    RPAREN          reduce using rule 28 (expr -> expr AND expr .)
-    SEMICOLON       reduce using rule 28 (expr -> expr AND expr .)
-    PLUS            shift and go to state 28
-    MINUS           shift and go to state 29
-    TIMES           shift and go to state 30
-    DIVIDE          shift and go to state 31
-    ARROW           shift and go to state 32
+    IF              shift and go to state 8
+    WHILE           shift and go to state 9
+    FOR             shift and go to state 10
+    MOVE_UP         shift and go to state 11
+    MOVE_DOWN       shift and go to state 12
+    MOVE_LEFT       shift and go to state 13
+    MOVE_RIGHT      shift and go to state 14
+    JUMP            shift and go to state 15
+    ATTACK          shift and go to state 16
+    DEFEND          shift and go to state 17
 
-  ! PLUS            [ reduce using rule 28 (expr -> expr AND expr .) ]
-  ! MINUS           [ reduce using rule 28 (expr -> expr AND expr .) ]
-  ! TIMES           [ reduce using rule 28 (expr -> expr AND expr .) ]
-  ! DIVIDE          [ reduce using rule 28 (expr -> expr AND expr .) ]
-  ! ARROW           [ reduce using rule 28 (expr -> expr AND expr .) ]
-  ! AND             [ shift and go to state 33 ]
-  ! OR              [ shift and go to state 34 ]
-
+    S                              shift and go to state 46
+    cmd                            shift and go to state 2
+    if_stmt                        shift and go to state 3
+    while_stmt                     shift and go to state 4
+    for_stmt                       shift and go to state 5
+    move_cmd                       shift and go to state 6
+    action_cmd                     shift and go to state 7
 
 state 45
 
-    (29) expr -> expr OR expr .
-    (23) expr -> expr . PLUS expr
-    (24) expr -> expr . MINUS expr
-    (25) expr -> expr . TIMES expr
-    (26) expr -> expr . DIVIDE expr
-    (27) expr -> expr . ARROW expr
-    (28) expr -> expr . AND expr
-    (29) expr -> expr . OR expr
+    (16) for_stmt -> FOR LPAREN expr SEMICOLON expr SEMICOLON expr RPAREN LBRACE . S RBRACE
+    (1) S -> . cmd
+    (2) S -> . if_stmt
+    (3) S -> . while_stmt
+    (4) S -> . for_stmt
+    (5) cmd -> . move_cmd
+    (6) cmd -> . action_cmd
+    (14) if_stmt -> . IF LPAREN expr RPAREN LBRACE S RBRACE ELSE LBRACE S RBRACE
+    (15) while_stmt -> . WHILE LPAREN expr RPAREN LBRACE S RBRACE
+    (16) for_stmt -> . FOR LPAREN expr SEMICOLON expr SEMICOLON expr RPAREN LBRACE S RBRACE
+    (7) move_cmd -> . MOVE_UP
+    (8) move_cmd -> . MOVE_DOWN
+    (9) move_cmd -> . MOVE_LEFT
+    (10) move_cmd -> . MOVE_RIGHT
+    (11) action_cmd -> . JUMP
+    (12) action_cmd -> . ATTACK
+    (13) action_cmd -> . DEFEND
 
-    OR              reduce using rule 29 (expr -> expr OR expr .)
-    IF              reduce using rule 29 (expr -> expr OR expr .)
-    WHILE           reduce using rule 29 (expr -> expr OR expr .)
-    FOR             reduce using rule 29 (expr -> expr OR expr .)
-    IDENTIFIER      reduce using rule 29 (expr -> expr OR expr .)
-    NUMBER          reduce using rule 29 (expr -> expr OR expr .)
-    NOT             reduce using rule 29 (expr -> expr OR expr .)
-    MOVE_UP         reduce using rule 29 (expr -> expr OR expr .)
-    MOVE_DOWN       reduce using rule 29 (expr -> expr OR expr .)
-    MOVE_LEFT       reduce using rule 29 (expr -> expr OR expr .)
-    MOVE_RIGHT      reduce using rule 29 (expr -> expr OR expr .)
-    JUMP            reduce using rule 29 (expr -> expr OR expr .)
-    ATTACK          reduce using rule 29 (expr -> expr OR expr .)
-    DEFEND          reduce using rule 29 (expr -> expr OR expr .)
-    $end            reduce using rule 29 (expr -> expr OR expr .)
-    RBRACE          reduce using rule 29 (expr -> expr OR expr .)
-    RPAREN          reduce using rule 29 (expr -> expr OR expr .)
-    SEMICOLON       reduce using rule 29 (expr -> expr OR expr .)
-    PLUS            shift and go to state 28
-    MINUS           shift and go to state 29
-    TIMES           shift and go to state 30
-    DIVIDE          shift and go to state 31
-    ARROW           shift and go to state 32
-    AND             shift and go to state 33
+    IF              shift and go to state 8
+    WHILE           shift and go to state 9
+    FOR             shift and go to state 10
+    MOVE_UP         shift and go to state 11
+    MOVE_DOWN       shift and go to state 12
+    MOVE_LEFT       shift and go to state 13
+    MOVE_RIGHT      shift and go to state 14
+    JUMP            shift and go to state 15
+    ATTACK          shift and go to state 16
+    DEFEND          shift and go to state 17
 
-  ! PLUS            [ reduce using rule 29 (expr -> expr OR expr .) ]
-  ! MINUS           [ reduce using rule 29 (expr -> expr OR expr .) ]
-  ! TIMES           [ reduce using rule 29 (expr -> expr OR expr .) ]
-  ! DIVIDE          [ reduce using rule 29 (expr -> expr OR expr .) ]
-  ! ARROW           [ reduce using rule 29 (expr -> expr OR expr .) ]
-  ! AND             [ reduce using rule 29 (expr -> expr OR expr .) ]
-  ! OR              [ shift and go to state 34 ]
-
+    S                              shift and go to state 47
+    cmd                            shift and go to state 2
+    if_stmt                        shift and go to state 3
+    while_stmt                     shift and go to state 4
+    for_stmt                       shift and go to state 5
+    move_cmd                       shift and go to state 6
+    action_cmd                     shift and go to state 7
 
 state 46
 
-    (17) if_stmt -> IF LPAREN expr . RPAREN LBRACE S RBRACE
-    (18) if_stmt -> IF LPAREN expr . RPAREN LBRACE S RBRACE ELSE LBRACE S RBRACE
-    (23) expr -> expr . PLUS expr
-    (24) expr -> expr . MINUS expr
-    (25) expr -> expr . TIMES expr
-    (26) expr -> expr . DIVIDE expr
-    (27) expr -> expr . ARROW expr
-    (28) expr -> expr . AND expr
-    (29) expr -> expr . OR expr
+    (14) if_stmt -> IF LPAREN expr RPAREN LBRACE S RBRACE ELSE LBRACE S . RBRACE
 
-    RPAREN          shift and go to state 49
-    PLUS            shift and go to state 28
-    MINUS           shift and go to state 29
-    TIMES           shift and go to state 30
-    DIVIDE          shift and go to state 31
-    ARROW           shift and go to state 32
-    AND             shift and go to state 33
-    OR              shift and go to state 34
+    RBRACE          shift and go to state 48
 
 
 state 47
 
-    (19) while_stmt -> WHILE LPAREN expr . RPAREN LBRACE S RBRACE
-    (23) expr -> expr . PLUS expr
-    (24) expr -> expr . MINUS expr
-    (25) expr -> expr . TIMES expr
-    (26) expr -> expr . DIVIDE expr
-    (27) expr -> expr . ARROW expr
-    (28) expr -> expr . AND expr
-    (29) expr -> expr . OR expr
+    (16) for_stmt -> FOR LPAREN expr SEMICOLON expr SEMICOLON expr RPAREN LBRACE S . RBRACE
 
-    RPAREN          shift and go to state 50
-    PLUS            shift and go to state 28
-    MINUS           shift and go to state 29
-    TIMES           shift and go to state 30
-    DIVIDE          shift and go to state 31
-    ARROW           shift and go to state 32
-    AND             shift and go to state 33
-    OR              shift and go to state 34
+    RBRACE          shift and go to state 49
 
 
 state 48
 
-    (20) for_stmt -> FOR LPAREN expr . SEMICOLON expr SEMICOLON expr RPAREN LBRACE S RBRACE
-    (23) expr -> expr . PLUS expr
-    (24) expr -> expr . MINUS expr
-    (25) expr -> expr . TIMES expr
-    (26) expr -> expr . DIVIDE expr
-    (27) expr -> expr . ARROW expr
-    (28) expr -> expr . AND expr
-    (29) expr -> expr . OR expr
+    (14) if_stmt -> IF LPAREN expr RPAREN LBRACE S RBRACE ELSE LBRACE S RBRACE .
 
-    SEMICOLON       shift and go to state 51
-    PLUS            shift and go to state 28
-    MINUS           shift and go to state 29
-    TIMES           shift and go to state 30
-    DIVIDE          shift and go to state 31
-    ARROW           shift and go to state 32
-    AND             shift and go to state 33
-    OR              shift and go to state 34
+    $end            reduce using rule 14 (if_stmt -> IF LPAREN expr RPAREN LBRACE S RBRACE ELSE LBRACE S RBRACE .)
+    RBRACE          reduce using rule 14 (if_stmt -> IF LPAREN expr RPAREN LBRACE S RBRACE ELSE LBRACE S RBRACE .)
 
 
 state 49
 
-    (17) if_stmt -> IF LPAREN expr RPAREN . LBRACE S RBRACE
-    (18) if_stmt -> IF LPAREN expr RPAREN . LBRACE S RBRACE ELSE LBRACE S RBRACE
+    (16) for_stmt -> FOR LPAREN expr SEMICOLON expr SEMICOLON expr RPAREN LBRACE S RBRACE .
 
-    LBRACE          shift and go to state 52
-
-
-state 50
-
-    (19) while_stmt -> WHILE LPAREN expr RPAREN . LBRACE S RBRACE
-
-    LBRACE          shift and go to state 53
-
-
-state 51
-
-    (20) for_stmt -> FOR LPAREN expr SEMICOLON . expr SEMICOLON expr RPAREN LBRACE S RBRACE
-    (21) expr -> . IDENTIFIER
-    (22) expr -> . NUMBER
-    (23) expr -> . expr PLUS expr
-    (24) expr -> . expr MINUS expr
-    (25) expr -> . expr TIMES expr
-    (26) expr -> . expr DIVIDE expr
-    (27) expr -> . expr ARROW expr
-    (28) expr -> . expr AND expr
-    (29) expr -> . expr OR expr
-    (30) expr -> . NOT expr
-
-    IDENTIFIER      shift and go to state 13
-    NUMBER          shift and go to state 14
-    NOT             shift and go to state 15
-
-    expr                           shift and go to state 54
-
-state 52
-
-    (17) if_stmt -> IF LPAREN expr RPAREN LBRACE . S RBRACE
-    (18) if_stmt -> IF LPAREN expr RPAREN LBRACE . S RBRACE ELSE LBRACE S RBRACE
-    (1) S -> . cmd S
-    (2) S -> . if_stmt S
-    (3) S -> . while_stmt S
-    (4) S -> . for_stmt S
-    (5) S -> . expr S
-    (6) S -> . empty
-    (8) cmd -> . move_cmd
-    (9) cmd -> . action_cmd
-    (17) if_stmt -> . IF LPAREN expr RPAREN LBRACE S RBRACE
-    (18) if_stmt -> . IF LPAREN expr RPAREN LBRACE S RBRACE ELSE LBRACE S RBRACE
-    (19) while_stmt -> . WHILE LPAREN expr RPAREN LBRACE S RBRACE
-    (20) for_stmt -> . FOR LPAREN expr SEMICOLON expr SEMICOLON expr RPAREN LBRACE S RBRACE
-    (21) expr -> . IDENTIFIER
-    (22) expr -> . NUMBER
-    (23) expr -> . expr PLUS expr
-    (24) expr -> . expr MINUS expr
-    (25) expr -> . expr TIMES expr
-    (26) expr -> . expr DIVIDE expr
-    (27) expr -> . expr ARROW expr
-    (28) expr -> . expr AND expr
-    (29) expr -> . expr OR expr
-    (30) expr -> . NOT expr
-    (7) empty -> .
-    (10) move_cmd -> . MOVE_UP
-    (11) move_cmd -> . MOVE_DOWN
-    (12) move_cmd -> . MOVE_LEFT
-    (13) move_cmd -> . MOVE_RIGHT
-    (14) action_cmd -> . JUMP
-    (15) action_cmd -> . ATTACK
-    (16) action_cmd -> . DEFEND
-
-    IF              shift and go to state 10
-    WHILE           shift and go to state 11
-    FOR             shift and go to state 12
-    IDENTIFIER      shift and go to state 13
-    NUMBER          shift and go to state 14
-    NOT             shift and go to state 15
-    RBRACE          reduce using rule 7 (empty -> .)
-    MOVE_UP         shift and go to state 16
-    MOVE_DOWN       shift and go to state 17
-    MOVE_LEFT       shift and go to state 18
-    MOVE_RIGHT      shift and go to state 19
-    JUMP            shift and go to state 20
-    ATTACK          shift and go to state 21
-    DEFEND          shift and go to state 22
-
-    expr                           shift and go to state 6
-    S                              shift and go to state 55
-    cmd                            shift and go to state 2
-    if_stmt                        shift and go to state 3
-    while_stmt                     shift and go to state 4
-    for_stmt                       shift and go to state 5
-    empty                          shift and go to state 7
-    move_cmd                       shift and go to state 8
-    action_cmd                     shift and go to state 9
-
-state 53
-
-    (19) while_stmt -> WHILE LPAREN expr RPAREN LBRACE . S RBRACE
-    (1) S -> . cmd S
-    (2) S -> . if_stmt S
-    (3) S -> . while_stmt S
-    (4) S -> . for_stmt S
-    (5) S -> . expr S
-    (6) S -> . empty
-    (8) cmd -> . move_cmd
-    (9) cmd -> . action_cmd
-    (17) if_stmt -> . IF LPAREN expr RPAREN LBRACE S RBRACE
-    (18) if_stmt -> . IF LPAREN expr RPAREN LBRACE S RBRACE ELSE LBRACE S RBRACE
-    (19) while_stmt -> . WHILE LPAREN expr RPAREN LBRACE S RBRACE
-    (20) for_stmt -> . FOR LPAREN expr SEMICOLON expr SEMICOLON expr RPAREN LBRACE S RBRACE
-    (21) expr -> . IDENTIFIER
-    (22) expr -> . NUMBER
-    (23) expr -> . expr PLUS expr
-    (24) expr -> . expr MINUS expr
-    (25) expr -> . expr TIMES expr
-    (26) expr -> . expr DIVIDE expr
-    (27) expr -> . expr ARROW expr
-    (28) expr -> . expr AND expr
-    (29) expr -> . expr OR expr
-    (30) expr -> . NOT expr
-    (7) empty -> .
-    (10) move_cmd -> . MOVE_UP
-    (11) move_cmd -> . MOVE_DOWN
-    (12) move_cmd -> . MOVE_LEFT
-    (13) move_cmd -> . MOVE_RIGHT
-    (14) action_cmd -> . JUMP
-    (15) action_cmd -> . ATTACK
-    (16) action_cmd -> . DEFEND
-
-    IF              shift and go to state 10
-    WHILE           shift and go to state 11
-    FOR             shift and go to state 12
-    IDENTIFIER      shift and go to state 13
-    NUMBER          shift and go to state 14
-    NOT             shift and go to state 15
-    RBRACE          reduce using rule 7 (empty -> .)
-    MOVE_UP         shift and go to state 16
-    MOVE_DOWN       shift and go to state 17
-    MOVE_LEFT       shift and go to state 18
-    MOVE_RIGHT      shift and go to state 19
-    JUMP            shift and go to state 20
-    ATTACK          shift and go to state 21
-    DEFEND          shift and go to state 22
-
-    expr                           shift and go to state 6
-    S                              shift and go to state 56
-    cmd                            shift and go to state 2
-    if_stmt                        shift and go to state 3
-    while_stmt                     shift and go to state 4
-    for_stmt                       shift and go to state 5
-    empty                          shift and go to state 7
-    move_cmd                       shift and go to state 8
-    action_cmd                     shift and go to state 9
-
-state 54
-
-    (20) for_stmt -> FOR LPAREN expr SEMICOLON expr . SEMICOLON expr RPAREN LBRACE S RBRACE
-    (23) expr -> expr . PLUS expr
-    (24) expr -> expr . MINUS expr
-    (25) expr -> expr . TIMES expr
-    (26) expr -> expr . DIVIDE expr
-    (27) expr -> expr . ARROW expr
-    (28) expr -> expr . AND expr
-    (29) expr -> expr . OR expr
-
-    SEMICOLON       shift and go to state 57
-    PLUS            shift and go to state 28
-    MINUS           shift and go to state 29
-    TIMES           shift and go to state 30
-    DIVIDE          shift and go to state 31
-    ARROW           shift and go to state 32
-    AND             shift and go to state 33
-    OR              shift and go to state 34
-
-
-state 55
-
-    (17) if_stmt -> IF LPAREN expr RPAREN LBRACE S . RBRACE
-    (18) if_stmt -> IF LPAREN expr RPAREN LBRACE S . RBRACE ELSE LBRACE S RBRACE
-
-    RBRACE          shift and go to state 58
-
-
-state 56
-
-    (19) while_stmt -> WHILE LPAREN expr RPAREN LBRACE S . RBRACE
-
-    RBRACE          shift and go to state 59
-
-
-state 57
-
-    (20) for_stmt -> FOR LPAREN expr SEMICOLON expr SEMICOLON . expr RPAREN LBRACE S RBRACE
-    (21) expr -> . IDENTIFIER
-    (22) expr -> . NUMBER
-    (23) expr -> . expr PLUS expr
-    (24) expr -> . expr MINUS expr
-    (25) expr -> . expr TIMES expr
-    (26) expr -> . expr DIVIDE expr
-    (27) expr -> . expr ARROW expr
-    (28) expr -> . expr AND expr
-    (29) expr -> . expr OR expr
-    (30) expr -> . NOT expr
-
-    IDENTIFIER      shift and go to state 13
-    NUMBER          shift and go to state 14
-    NOT             shift and go to state 15
-
-    expr                           shift and go to state 60
-
-state 58
-
-    (17) if_stmt -> IF LPAREN expr RPAREN LBRACE S RBRACE .
-    (18) if_stmt -> IF LPAREN expr RPAREN LBRACE S RBRACE . ELSE LBRACE S RBRACE
-
-    IF              reduce using rule 17 (if_stmt -> IF LPAREN expr RPAREN LBRACE S RBRACE .)
-    WHILE           reduce using rule 17 (if_stmt -> IF LPAREN expr RPAREN LBRACE S RBRACE .)
-    FOR             reduce using rule 17 (if_stmt -> IF LPAREN expr RPAREN LBRACE S RBRACE .)
-    IDENTIFIER      reduce using rule 17 (if_stmt -> IF LPAREN expr RPAREN LBRACE S RBRACE .)
-    NUMBER          reduce using rule 17 (if_stmt -> IF LPAREN expr RPAREN LBRACE S RBRACE .)
-    NOT             reduce using rule 17 (if_stmt -> IF LPAREN expr RPAREN LBRACE S RBRACE .)
-    MOVE_UP         reduce using rule 17 (if_stmt -> IF LPAREN expr RPAREN LBRACE S RBRACE .)
-    MOVE_DOWN       reduce using rule 17 (if_stmt -> IF LPAREN expr RPAREN LBRACE S RBRACE .)
-    MOVE_LEFT       reduce using rule 17 (if_stmt -> IF LPAREN expr RPAREN LBRACE S RBRACE .)
-    MOVE_RIGHT      reduce using rule 17 (if_stmt -> IF LPAREN expr RPAREN LBRACE S RBRACE .)
-    JUMP            reduce using rule 17 (if_stmt -> IF LPAREN expr RPAREN LBRACE S RBRACE .)
-    ATTACK          reduce using rule 17 (if_stmt -> IF LPAREN expr RPAREN LBRACE S RBRACE .)
-    DEFEND          reduce using rule 17 (if_stmt -> IF LPAREN expr RPAREN LBRACE S RBRACE .)
-    $end            reduce using rule 17 (if_stmt -> IF LPAREN expr RPAREN LBRACE S RBRACE .)
-    RBRACE          reduce using rule 17 (if_stmt -> IF LPAREN expr RPAREN LBRACE S RBRACE .)
-    ELSE            shift and go to state 61
-
-
-state 59
-
-    (19) while_stmt -> WHILE LPAREN expr RPAREN LBRACE S RBRACE .
-
-    IF              reduce using rule 19 (while_stmt -> WHILE LPAREN expr RPAREN LBRACE S RBRACE .)
-    WHILE           reduce using rule 19 (while_stmt -> WHILE LPAREN expr RPAREN LBRACE S RBRACE .)
-    FOR             reduce using rule 19 (while_stmt -> WHILE LPAREN expr RPAREN LBRACE S RBRACE .)
-    IDENTIFIER      reduce using rule 19 (while_stmt -> WHILE LPAREN expr RPAREN LBRACE S RBRACE .)
-    NUMBER          reduce using rule 19 (while_stmt -> WHILE LPAREN expr RPAREN LBRACE S RBRACE .)
-    NOT             reduce using rule 19 (while_stmt -> WHILE LPAREN expr RPAREN LBRACE S RBRACE .)
-    MOVE_UP         reduce using rule 19 (while_stmt -> WHILE LPAREN expr RPAREN LBRACE S RBRACE .)
-    MOVE_DOWN       reduce using rule 19 (while_stmt -> WHILE LPAREN expr RPAREN LBRACE S RBRACE .)
-    MOVE_LEFT       reduce using rule 19 (while_stmt -> WHILE LPAREN expr RPAREN LBRACE S RBRACE .)
-    MOVE_RIGHT      reduce using rule 19 (while_stmt -> WHILE LPAREN expr RPAREN LBRACE S RBRACE .)
-    JUMP            reduce using rule 19 (while_stmt -> WHILE LPAREN expr RPAREN LBRACE S RBRACE .)
-    ATTACK          reduce using rule 19 (while_stmt -> WHILE LPAREN expr RPAREN LBRACE S RBRACE .)
-    DEFEND          reduce using rule 19 (while_stmt -> WHILE LPAREN expr RPAREN LBRACE S RBRACE .)
-    $end            reduce using rule 19 (while_stmt -> WHILE LPAREN expr RPAREN LBRACE S RBRACE .)
-    RBRACE          reduce using rule 19 (while_stmt -> WHILE LPAREN expr RPAREN LBRACE S RBRACE .)
-
-
-state 60
-
-    (20) for_stmt -> FOR LPAREN expr SEMICOLON expr SEMICOLON expr . RPAREN LBRACE S RBRACE
-    (23) expr -> expr . PLUS expr
-    (24) expr -> expr . MINUS expr
-    (25) expr -> expr . TIMES expr
-    (26) expr -> expr . DIVIDE expr
-    (27) expr -> expr . ARROW expr
-    (28) expr -> expr . AND expr
-    (29) expr -> expr . OR expr
-
-    RPAREN          shift and go to state 62
-    PLUS            shift and go to state 28
-    MINUS           shift and go to state 29
-    TIMES           shift and go to state 30
-    DIVIDE          shift and go to state 31
-    ARROW           shift and go to state 32
-    AND             shift and go to state 33
-    OR              shift and go to state 34
-
-
-state 61
-
-    (18) if_stmt -> IF LPAREN expr RPAREN LBRACE S RBRACE ELSE . LBRACE S RBRACE
-
-    LBRACE          shift and go to state 63
-
-
-state 62
-
-    (20) for_stmt -> FOR LPAREN expr SEMICOLON expr SEMICOLON expr RPAREN . LBRACE S RBRACE
-
-    LBRACE          shift and go to state 64
-
-
-state 63
-
-    (18) if_stmt -> IF LPAREN expr RPAREN LBRACE S RBRACE ELSE LBRACE . S RBRACE
-    (1) S -> . cmd S
-    (2) S -> . if_stmt S
-    (3) S -> . while_stmt S
-    (4) S -> . for_stmt S
-    (5) S -> . expr S
-    (6) S -> . empty
-    (8) cmd -> . move_cmd
-    (9) cmd -> . action_cmd
-    (17) if_stmt -> . IF LPAREN expr RPAREN LBRACE S RBRACE
-    (18) if_stmt -> . IF LPAREN expr RPAREN LBRACE S RBRACE ELSE LBRACE S RBRACE
-    (19) while_stmt -> . WHILE LPAREN expr RPAREN LBRACE S RBRACE
-    (20) for_stmt -> . FOR LPAREN expr SEMICOLON expr SEMICOLON expr RPAREN LBRACE S RBRACE
-    (21) expr -> . IDENTIFIER
-    (22) expr -> . NUMBER
-    (23) expr -> . expr PLUS expr
-    (24) expr -> . expr MINUS expr
-    (25) expr -> . expr TIMES expr
-    (26) expr -> . expr DIVIDE expr
-    (27) expr -> . expr ARROW expr
-    (28) expr -> . expr AND expr
-    (29) expr -> . expr OR expr
-    (30) expr -> . NOT expr
-    (7) empty -> .
-    (10) move_cmd -> . MOVE_UP
-    (11) move_cmd -> . MOVE_DOWN
-    (12) move_cmd -> . MOVE_LEFT
-    (13) move_cmd -> . MOVE_RIGHT
-    (14) action_cmd -> . JUMP
-    (15) action_cmd -> . ATTACK
-    (16) action_cmd -> . DEFEND
-
-    IF              shift and go to state 10
-    WHILE           shift and go to state 11
-    FOR             shift and go to state 12
-    IDENTIFIER      shift and go to state 13
-    NUMBER          shift and go to state 14
-    NOT             shift and go to state 15
-    RBRACE          reduce using rule 7 (empty -> .)
-    MOVE_UP         shift and go to state 16
-    MOVE_DOWN       shift and go to state 17
-    MOVE_LEFT       shift and go to state 18
-    MOVE_RIGHT      shift and go to state 19
-    JUMP            shift and go to state 20
-    ATTACK          shift and go to state 21
-    DEFEND          shift and go to state 22
-
-    expr                           shift and go to state 6
-    S                              shift and go to state 65
-    cmd                            shift and go to state 2
-    if_stmt                        shift and go to state 3
-    while_stmt                     shift and go to state 4
-    for_stmt                       shift and go to state 5
-    empty                          shift and go to state 7
-    move_cmd                       shift and go to state 8
-    action_cmd                     shift and go to state 9
-
-state 64
-
-    (20) for_stmt -> FOR LPAREN expr SEMICOLON expr SEMICOLON expr RPAREN LBRACE . S RBRACE
-    (1) S -> . cmd S
-    (2) S -> . if_stmt S
-    (3) S -> . while_stmt S
-    (4) S -> . for_stmt S
-    (5) S -> . expr S
-    (6) S -> . empty
-    (8) cmd -> . move_cmd
-    (9) cmd -> . action_cmd
-    (17) if_stmt -> . IF LPAREN expr RPAREN LBRACE S RBRACE
-    (18) if_stmt -> . IF LPAREN expr RPAREN LBRACE S RBRACE ELSE LBRACE S RBRACE
-    (19) while_stmt -> . WHILE LPAREN expr RPAREN LBRACE S RBRACE
-    (20) for_stmt -> . FOR LPAREN expr SEMICOLON expr SEMICOLON expr RPAREN LBRACE S RBRACE
-    (21) expr -> . IDENTIFIER
-    (22) expr -> . NUMBER
-    (23) expr -> . expr PLUS expr
-    (24) expr -> . expr MINUS expr
-    (25) expr -> . expr TIMES expr
-    (26) expr -> . expr DIVIDE expr
-    (27) expr -> . expr ARROW expr
-    (28) expr -> . expr AND expr
-    (29) expr -> . expr OR expr
-    (30) expr -> . NOT expr
-    (7) empty -> .
-    (10) move_cmd -> . MOVE_UP
-    (11) move_cmd -> . MOVE_DOWN
-    (12) move_cmd -> . MOVE_LEFT
-    (13) move_cmd -> . MOVE_RIGHT
-    (14) action_cmd -> . JUMP
-    (15) action_cmd -> . ATTACK
-    (16) action_cmd -> . DEFEND
-
-    IF              shift and go to state 10
-    WHILE           shift and go to state 11
-    FOR             shift and go to state 12
-    IDENTIFIER      shift and go to state 13
-    NUMBER          shift and go to state 14
-    NOT             shift and go to state 15
-    RBRACE          reduce using rule 7 (empty -> .)
-    MOVE_UP         shift and go to state 16
-    MOVE_DOWN       shift and go to state 17
-    MOVE_LEFT       shift and go to state 18
-    MOVE_RIGHT      shift and go to state 19
-    JUMP            shift and go to state 20
-    ATTACK          shift and go to state 21
-    DEFEND          shift and go to state 22
-
-    expr                           shift and go to state 6
-    S                              shift and go to state 66
-    cmd                            shift and go to state 2
-    if_stmt                        shift and go to state 3
-    while_stmt                     shift and go to state 4
-    for_stmt                       shift and go to state 5
-    empty                          shift and go to state 7
-    move_cmd                       shift and go to state 8
-    action_cmd                     shift and go to state 9
-
-state 65
-
-    (18) if_stmt -> IF LPAREN expr RPAREN LBRACE S RBRACE ELSE LBRACE S . RBRACE
-
-    RBRACE          shift and go to state 67
-
-
-state 66
-
-    (20) for_stmt -> FOR LPAREN expr SEMICOLON expr SEMICOLON expr RPAREN LBRACE S . RBRACE
-
-    RBRACE          shift and go to state 68
-
-
-state 67
-
-    (18) if_stmt -> IF LPAREN expr RPAREN LBRACE S RBRACE ELSE LBRACE S RBRACE .
-
-    IF              reduce using rule 18 (if_stmt -> IF LPAREN expr RPAREN LBRACE S RBRACE ELSE LBRACE S RBRACE .)
-    WHILE           reduce using rule 18 (if_stmt -> IF LPAREN expr RPAREN LBRACE S RBRACE ELSE LBRACE S RBRACE .)
-    FOR             reduce using rule 18 (if_stmt -> IF LPAREN expr RPAREN LBRACE S RBRACE ELSE LBRACE S RBRACE .)
-    IDENTIFIER      reduce using rule 18 (if_stmt -> IF LPAREN expr RPAREN LBRACE S RBRACE ELSE LBRACE S RBRACE .)
-    NUMBER          reduce using rule 18 (if_stmt -> IF LPAREN expr RPAREN LBRACE S RBRACE ELSE LBRACE S RBRACE .)
-    NOT             reduce using rule 18 (if_stmt -> IF LPAREN expr RPAREN LBRACE S RBRACE ELSE LBRACE S RBRACE .)
-    MOVE_UP         reduce using rule 18 (if_stmt -> IF LPAREN expr RPAREN LBRACE S RBRACE ELSE LBRACE S RBRACE .)
-    MOVE_DOWN       reduce using rule 18 (if_stmt -> IF LPAREN expr RPAREN LBRACE S RBRACE ELSE LBRACE S RBRACE .)
-    MOVE_LEFT       reduce using rule 18 (if_stmt -> IF LPAREN expr RPAREN LBRACE S RBRACE ELSE LBRACE S RBRACE .)
-    MOVE_RIGHT      reduce using rule 18 (if_stmt -> IF LPAREN expr RPAREN LBRACE S RBRACE ELSE LBRACE S RBRACE .)
-    JUMP            reduce using rule 18 (if_stmt -> IF LPAREN expr RPAREN LBRACE S RBRACE ELSE LBRACE S RBRACE .)
-    ATTACK          reduce using rule 18 (if_stmt -> IF LPAREN expr RPAREN LBRACE S RBRACE ELSE LBRACE S RBRACE .)
-    DEFEND          reduce using rule 18 (if_stmt -> IF LPAREN expr RPAREN LBRACE S RBRACE ELSE LBRACE S RBRACE .)
-    $end            reduce using rule 18 (if_stmt -> IF LPAREN expr RPAREN LBRACE S RBRACE ELSE LBRACE S RBRACE .)
-    RBRACE          reduce using rule 18 (if_stmt -> IF LPAREN expr RPAREN LBRACE S RBRACE ELSE LBRACE S RBRACE .)
-
-
-state 68
-
-    (20) for_stmt -> FOR LPAREN expr SEMICOLON expr SEMICOLON expr RPAREN LBRACE S RBRACE .
-
-    IF              reduce using rule 20 (for_stmt -> FOR LPAREN expr SEMICOLON expr SEMICOLON expr RPAREN LBRACE S RBRACE .)
-    WHILE           reduce using rule 20 (for_stmt -> FOR LPAREN expr SEMICOLON expr SEMICOLON expr RPAREN LBRACE S RBRACE .)
-    FOR             reduce using rule 20 (for_stmt -> FOR LPAREN expr SEMICOLON expr SEMICOLON expr RPAREN LBRACE S RBRACE .)
-    IDENTIFIER      reduce using rule 20 (for_stmt -> FOR LPAREN expr SEMICOLON expr SEMICOLON expr RPAREN LBRACE S RBRACE .)
-    NUMBER          reduce using rule 20 (for_stmt -> FOR LPAREN expr SEMICOLON expr SEMICOLON expr RPAREN LBRACE S RBRACE .)
-    NOT             reduce using rule 20 (for_stmt -> FOR LPAREN expr SEMICOLON expr SEMICOLON expr RPAREN LBRACE S RBRACE .)
-    MOVE_UP         reduce using rule 20 (for_stmt -> FOR LPAREN expr SEMICOLON expr SEMICOLON expr RPAREN LBRACE S RBRACE .)
-    MOVE_DOWN       reduce using rule 20 (for_stmt -> FOR LPAREN expr SEMICOLON expr SEMICOLON expr RPAREN LBRACE S RBRACE .)
-    MOVE_LEFT       reduce using rule 20 (for_stmt -> FOR LPAREN expr SEMICOLON expr SEMICOLON expr RPAREN LBRACE S RBRACE .)
-    MOVE_RIGHT      reduce using rule 20 (for_stmt -> FOR LPAREN expr SEMICOLON expr SEMICOLON expr RPAREN LBRACE S RBRACE .)
-    JUMP            reduce using rule 20 (for_stmt -> FOR LPAREN expr SEMICOLON expr SEMICOLON expr RPAREN LBRACE S RBRACE .)
-    ATTACK          reduce using rule 20 (for_stmt -> FOR LPAREN expr SEMICOLON expr SEMICOLON expr RPAREN LBRACE S RBRACE .)
-    DEFEND          reduce using rule 20 (for_stmt -> FOR LPAREN expr SEMICOLON expr SEMICOLON expr RPAREN LBRACE S RBRACE .)
-    $end            reduce using rule 20 (for_stmt -> FOR LPAREN expr SEMICOLON expr SEMICOLON expr RPAREN LBRACE S RBRACE .)
-    RBRACE          reduce using rule 20 (for_stmt -> FOR LPAREN expr SEMICOLON expr SEMICOLON expr RPAREN LBRACE S RBRACE .)
+    $end            reduce using rule 16 (for_stmt -> FOR LPAREN expr SEMICOLON expr SEMICOLON expr RPAREN LBRACE S RBRACE .)
+    RBRACE          reduce using rule 16 (for_stmt -> FOR LPAREN expr SEMICOLON expr SEMICOLON expr RPAREN LBRACE S RBRACE .)
 
